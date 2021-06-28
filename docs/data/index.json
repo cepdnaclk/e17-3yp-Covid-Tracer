@@ -17,11 +17,11 @@
             "website": "#"
         },
         {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx",
-            "github_profile":"#",
-            "linkedin_profile":"#",
+            "name": "Ruchika Perera",
+            "email": "e17242@eng.pdn.ac.lk",
+            "eNumber": "E/17/242",
+            "github_profile":"https://github.com/Ruchika-Perera",
+            "linkedin_profile":"https://www.linkedin.com/in/ruchika-perera-449487196/",
             "website": "#"
         }
     ],
@@ -43,3 +43,4 @@
     ],
     "tags": ["Web", "Embedded Systems"]
 }
+
