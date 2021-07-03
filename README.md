@@ -31,14 +31,14 @@ title: Covid Tracer
 
 ## Introduction
 
-# Overview
+### Overview
 **The Covid-19 Pandemic** is the defining Global Health Crisis of the contemporary society. Since its emergence in late 2019, the virus has spread across the entire world and led to a dramatic loss of human life. The economic and social disruption caused by the pandemic is devastating. Almost every sector is affected by this pandemic. In addition, this prevailing situation has raised unprecedented challenges to the daily routines of the people. While taking immense measures on infect diagnosis, Corona Virus treatments and controlling the spread of the disease a reasonable focus should be given to how we adjust to this new normal situation.\
 *When will the world be free of Covid?* is an unanswered question. Our focus is to make the new normal situation due to Covid easily adjustable for the people while making their lives safe.
 
-# Real World Problem
+### Real World Problem
 Due to the prevailing pandemic situation people have a responsibility of providing accurate details of themselves at entrances of various commercial places like shopping malls, banks etc. and get their temperatures checked and accepted before entering. This situation is currently handled manually by writing details on a book at entrances of various places which is bothersome as well as risky because of everyone touching the same stationary. Even the guards checking temperatures at entrances are at a higher risk of getting in contact with infects daily. Many people neglect going through this process, some even provide inaccurate data. Also there is currently no way of detecting if poeple under quaratine are in public society. Wouldn't it be better if we can keep track of the places we've visited and reported cases of infects from these places? Adhering to workplace safety and health practices and ensuring access to decent work and the protection of labour rights in all industries will be crucial in addressing the human dimension of the crisis.
 
-# Our Solution
+### Our Solution
 A Fully Autonomous Covid-19 Tracking System for a better and safe Sri Lanka\
 **Featues of our system**
 - Computerized Database System for Covid Manegement for Government Authorities
@@ -87,9 +87,9 @@ What was achieved, future developments, commercialization plans
 - [Project Repository](https://github.com/cepdnaclk/e17-3yp-Covid-Tracer/)
 - [Project Page](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer/)
 
-- [Department Projects](https://projects.ce.pdn.ac.lk/)\
-- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)\
-- [Faculty of Engineering](http://eng.pdn.ac.lk/)\
+- [Department Projects](https://projects.ce.pdn.ac.lk/)
+- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
+- [Faculty of Engineering](http://eng.pdn.ac.lk/)
 - [University of Peradeniya](https://www.pdn.ac.lk/academics/academics.php/)
 
 [//]: # (Please refer this to learn more about Markdown syntax)
