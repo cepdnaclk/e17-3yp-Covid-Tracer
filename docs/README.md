@@ -13,10 +13,6 @@ title: Covid Tracer
 
 ---
 
-## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
 
@@ -31,7 +27,8 @@ title: Covid Tracer
 4. [Testing](#testing)
 5. [Detailed budget](#detailed-budget)
 6. [Conclusion](#conclusion)
-7. [Links](#links)
+7. [Team](#team)
+8. [Links](#links)
 
 ## Introduction
 
@@ -61,6 +58,12 @@ All items and costs
 ## Conclusion
 
 What was achieved, future developments, commercialization plans
+
+## Team
+-  E/17/242, Perera C.R.M, [email](mailto:name@email.com)
+-  E/17/044, Name, [email](mailto:name@email.com)
+-  E/17/252, Name, [email](mailto:name@email.com)
+
 
 ## Links
 
