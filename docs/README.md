@@ -33,10 +33,9 @@ title: Covid Tracer
 
 ## Introduction
 -->
-This consists of the files for our Project Page\
+This consists of the files for our Project Page
 
-Visit our Project Page:
-[Visit Now](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer/)
+[Visit](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer/) our Project Page
 
 <!--
 ## Solution Architecture
