@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Data web</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">  
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ml-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#solution">Solution Architecture</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#design">Design</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#testing">Testing</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#budget">Budget</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#conclusion">Conclusion</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- banner -->
+      <section class="banner_main">
+         <div class="container">
+            <div class="row d_flex">
+               <div class="col-md-7">
+                  <div class="text-bg">
+                     <h1>Covid Tracer</h1>
+                     <!--<span>Landing Page 2019</span>  -->
+                     <span>Fully Autonomous Covid-19 Tracking System</span>
+                  </div>
+               </div>
+               <div class="col-md-5">
+                  <div id="banner_img" class="text-img">
+                     <figure><img src="images/logo.png" /></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end banner -->
+      <!-- Hosting -->
+
+      <!--Introduction-->
+      <div id="introduction" class="Introduction">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Introduction</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                     <h2>Overview</h2>
+                     <p><strong>The Covid-19 Pandemic</strong> is the defining Global Health Crisis of the contemporary society. Since its emergence in late
+                        2019, the virus has spread across the entire world and led to a dramatic loss of human life. The economic and social 
+                        disruption caused by the pandemic is devastating. Almost every sector is affected by this pandemic. In addition,
+                        this prevailing situation has raised unprecedented challenges to the daily routines of the people. While taking
+                        immense measures on infect diagnosis, Corona Virus treatments and controlling the spread of the disease a reasonable
+                        focus should be given to how we adjust to this new normal situation.<br>
+                        <i>When will the world be free of Covid? </i>is an unanswered question. Our focus is to make the new normal situation due 
+                        to Covid easily adjustable for the people while making their lives safe.</p>  
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                     <h2>Real World Problem</h2>
+                     <p>Due to the prevailing pandemic situation people have a responsibility of providing accurate details of themselves at 
+                        entrances of various commercial places like shopping malls, banks etc. and get their temperatures checked and accepted 
+                        before entering. This situation is currently handled manually by writing details on a book at entrances of various 
+                        places which is bothersome as well as risky because of everyone touching the same stationary. Even the guards checking
+                        temperatures at entrances are at a higher risk of getting in contact with infects daily. Many people neglect going 
+                        through this process, some even provide inaccurate data. Also there is currently no way of detecting if poeple under
+                        quaratine are in public society. Wouldn't it be better if we can keep track of the places we've visited and reported 
+                        cases of infects from these places? Adhering to workplace safety and health practices and ensuring access to decent 
+                        work and the protection of labour rights in all industries will be crucial in addressing the human dimension of the
+                        crisis.</p>  
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <!--<div class="content">-->
+                     <h2>Our Solution</h2>
+                     <p>
+                        A Fully Autonomous Covid-19 Tracking System for a better and safe Sri Lanka</p>
+                     <h4>   Featues of our system </h4>
+                        <ul style="list-style-type:circles;">
+                        <li>Computerized Database System for Covid Manegement for Government Authorities</li>
+                        <li>Various interfaces for Data Entering,Representation and Summarization of data</li>
+                        <li>Autonomous Detail Entering at entrances using Smart Card and detection of people under quarantine</li>
+                        <li>Automated door sliding system based on temperature, oxygen level parameters of people entering</li>
+                        <li>Website for viewing Covid related information. eg:daily cases, cumulative deaths etc.</li>
+                        <li>User login to website for viewing personal information: visited locations,
+                           reported cases from these locations for a period of 2 weeks, fluctuations of temperature, oxygen level using data obtained at entrances </li>
+                        <li>Mobile App for easy use</li>
+                        </ul>
+                     
+                  <!--</div>-->
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--Solution Architecture-->
+      <div id="solution" class="Solution Architecture">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Solution Architecture</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--Hardware and Software Designs-->
+
+      <div id="design" class="Design">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Hardware &#38 Software Designs</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--Testing-->
+
+      <div id="testing" class="Testing">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Testing</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--Budget-->
+
+      <div id="budget" class="Budget">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Detailed Budget</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--Conclusion-->
+
+      <div id="conclusion" class="Conclusion">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Conclusion</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      <!--Team-->
+
+      <div id="team" class="Team">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Team</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div id= "person1" class="Services-box">
+                     <i><img src="images/service2.png" alt="#" /></i>
+                     <h3> Ruchika Perera</h3>
+                     <p>E/17/242</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div id= "person2" class="Services-box">
+                     <i><img src="images/service2.png" alt="#" /></i>
+                     <h3>Deanna Coralage</h3>
+                     <p>E/17/044</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div id= "person3" class="Services-box">
+                     <i><img src="images/service2.png" alt="#" /></i>
+                     <h3>Kenath Perera</h3>
+                     <p>E/17/252</p>
+                  </div>
+               </div>
+
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      <!--Links-->
+
+      <div id="links"class="Links">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Links</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="content">
+                  
+                     <p></p>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      <!-- end contact -->
+      <!--  footer -->
+      <footer>
+         <div class="footer">
+            <!--<div class="container">
+               <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                     <div class="cont">
+                        <h3>Contact now</h3>
+                        <p></p>
+                     </div>
+                  </div>
+               </div>
+            </div>  -->
+            <div class="Symbols">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+    
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>  
+      <script src="js/custom.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="js/scroll-trigger.js"></script>  
+   </body>
+</html>
+
