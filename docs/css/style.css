@@ -322,7 +322,7 @@ button {
      background: #0c0f38;
      background-size: 100% 100%;
      background-repeat: no-repeat;
-     padding-bottom: 50px;
+     padding-bottom: 10px;
 }
 
 #banner_img{
@@ -351,11 +351,14 @@ button {
      text-align: justify;
 }
 
-.text-bg p {
+.text-bg h4 {
      color: #fff;
-     font-size: 17px;
+     font-size: 20px;
      line-height: 28px;
+     font-style: italic;
      padding: 40px 0;
+     text-align: justify;
+
 }
 
 .text-bg a {
@@ -445,7 +448,7 @@ button {
 
 .Introduction {
      margin-top: 90px;
-     padding: 60px 0;
+     padding: 20px 0;
      background: #fff;
      font-family: Poppins;
 }
