@@ -1,3 +1,4 @@
+<!--
 ---
 layout: home
 permalink: index.html
@@ -8,8 +9,8 @@ title: Covid Tracer
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
-
-# Covid Tracer
+-->
+# Project Page
 
 ---
 
@@ -19,7 +20,7 @@ title: Covid Tracer
 <!-- This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/) -->
 
 <!-- ![Sample Image](./images/sample.png) -->
-
+<!--
 #### Table of Contents
 1. [Introduction](#introduction)
 2. [Solution Architecture](#solution-architecture )
@@ -31,10 +32,13 @@ title: Covid Tracer
 8. [Links](#links)
 
 ## Introduction
+-->
+This consists of the files for our Project Page\
 
-Description of the real world problem and solution, impact
+Visit our Project Page:
+[Visit Now](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer/)
 
-
+<!--
 ## Solution Architecture
 
 High level diagram + description
@@ -58,19 +62,23 @@ All items and costs
 ## Conclusion
 
 What was achieved, future developments, commercialization plans
-
+-->
 ## Team
--  E/17/242, Perera C.R.M, [email](mailto:name@email.com)
--  E/17/044, Name, [email](mailto:name@email.com)
--  E/17/252, Name, [email](mailto:name@email.com)
+-  E/17/252, Kenath Perera, [email](mailto:e17252@eng.pdn.ac.lk)
+-  E/17/044, Deanna Coralage, [email](mailto:e17044@eng.pdn.ac.lk)
+-  E/17/242, Ruchika Perera, [email](mailto:e17242@eng.pdn.ac.lk)
 
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/{{ page.repository-name }}){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e17-3yp-Covid-Tracer/)
+- [Project Page](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer/)
+
+- [Department Projects](https://projects.ce.pdn.ac.lk/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
-- [University of Peradeniya](https://eng.pdn.ac.lk/)
+- [Faculty of Engineering](http://eng.pdn.ac.lk/)
+- [University of Peradeniya](https://www.pdn.ac.lk/academics/academics.php/)
+
 
 [//]: # (Please refer this to learn more about Markdown syntax)
 [//]: # (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
