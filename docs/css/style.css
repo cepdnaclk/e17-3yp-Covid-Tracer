@@ -112,12 +112,13 @@ button:focus {
      outline: none;
 }
 
-ul,
-li,
-ol {
+ul{
      margin: 0px;
      padding: 0px;
      font-size: 18px;
+     list-style: none;
+}
+ol{
      list-style: disc;
 }
 
@@ -277,7 +278,7 @@ button {
 }
 
 #mainNav.navbar-dark .navbar-nav .nav-link {
-     padding: 0 25px;
+     padding: 0 28px;
      color: #fff;
      font-size: 16px;
      line-height: 25px;
@@ -319,7 +320,9 @@ button {
 }
 
 .banner_main {
-     background: #0c0f38;
+     background: #4f8964;
+     /*#0c0f38*/
+     /*#6ab184*/
      background-size: 100% 100%;
      background-repeat: no-repeat;
      padding-bottom: 10px;
@@ -393,7 +396,7 @@ button {
 
 .titlepage h2 {
      font-size: 45px;
-     color: #0c0f38;
+     color: #476245;
      line-height: 40px;
      font-weight: bold;
      padding: 0;
@@ -452,6 +455,7 @@ button {
      background: #fff;
      font-family: Poppins;
 }
+
 
 /** Solution Architecture section **/
 
