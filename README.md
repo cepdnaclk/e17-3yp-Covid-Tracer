@@ -84,13 +84,13 @@ What was achieved, future developments, commercialization plans
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/e17-3yp-Covid-Tracer/)
-- [Project Page](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer/)
+- [Project Repository](https://github.com/cepdnaclk/e17-3yp-Covid-Tracer)
+- [Project Page](https://cepdnaclk.github.io/e17-3yp-Covid-Tracer)
 
-- [Department Projects](https://projects.ce.pdn.ac.lk/)
-- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
-- [Faculty of Engineering](http://eng.pdn.ac.lk/)
-- [University of Peradeniya](https://www.pdn.ac.lk/academics/academics.php/)
+- [Department Projects](https://projects.ce.pdn.ac.lk)
+- [Department of Computer Engineering](http://www.ce.pdn.ac.lk)
+- [Faculty of Engineering](http://eng.pdn.ac.lk)
+- [University of Peradeniya](https://www.pdn.ac.lk/academics/academics.php)
 
 [//]: # (Please refer this to learn more about Markdown syntax)
 [//]: # (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
