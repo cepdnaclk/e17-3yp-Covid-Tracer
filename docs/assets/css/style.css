@@ -122,6 +122,10 @@ body {
   padding-right: 10px;
 }
 
+.padding-t {
+  padding-left: 800px;
+}
+
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -701,7 +705,7 @@ div#preloader {
 # solution
 --------------------------------------------------------------*/
 .services-area {
-  background-color: #E2EFD9;
+  background-color: #C5E0B2;
   /* #C5E0B2;*/
 }
 
@@ -1125,7 +1129,7 @@ div#preloader {
 # Pricing
 --------------------------------------------------------------*/
 .pricing-area {
-  background: rgba(226, 239, 217) none repeat scroll 0 0;
+  background: rgba(197, 224, 178) none repeat scroll 0 0;
 }
 
 .pri_table_list {
@@ -1187,6 +1191,7 @@ div#preloader {
 .blog-area {
   height: auto;
   width: 100%;
+  background-color: #C5E0B2; 
 }
 
 .blog-text h4 a {
@@ -1253,7 +1258,7 @@ div#preloader {
 }
 
 .blog-meta {
-  border-bottom: 1px dotted #fff;
+  /*border-bottom: 1px dotted #;*/
   padding: 10px 0;
 }
 
@@ -1273,9 +1278,9 @@ div#preloader {
 }
 
 .single-blog .ready-btn {
-  border: 1px solid #444;
+  border: 1px solid #4f8964;
   border-radius: 30px;
-  color: #444;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-size: 15px;
@@ -1285,11 +1290,13 @@ div#preloader {
   text-align: center;
   text-transform: uppercase;
   transition: all 0.4s ease 0s;
+  background-color: #4f8964;
 }
 
 .single-blog .ready-btn:hover {
-  border: 1px solid #4f8964;
-  color: #fff;
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: #4f8964;
 }
 
 /*--------------------------------------------------------------
@@ -1455,7 +1462,7 @@ div#preloader {
 --------------------------------------------------------------*/
 .footer-area {
   padding: 40px 0;
-  background-color: #E2EFD9;
+  background-color: #C5E0B2;
 }
 
 .footer-head a {
