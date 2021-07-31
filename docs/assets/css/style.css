@@ -112,18 +112,18 @@ body {
   line-height: 22px;
 }
 
-.padding-img3 {
-  padding-left: 42px;
-  padding-right: 10px;
+.center-highlevel {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
-.padding-img4 {
-  padding-left: 80px;
-  padding-right: 10px;
-}
-
-.padding-t {
-  padding-left: 800px;
+.center-timeline {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
 
@@ -429,6 +429,7 @@ div#preloader {
     left: -100%;
   }
 }
+
 
 /**
 * Mobile Navigation 
@@ -785,7 +786,7 @@ div#preloader {
 }
 
 .team-member::before {
-  background: rgba(0, 0, 0, 0) url("../img/team/team01.jpg") repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url("../img/team/kenath.jpg") repeat scroll 0 0;
   content: "";
   display: block;
   height: 100%;
@@ -819,8 +820,6 @@ div#preloader {
 .padding-img2 {
   padding-left: 120px;
   padding-right: 120px;
-  padding-top: 120x;
-  padding-left: 120ps;
 }
 
 .team-left-text h4 {
