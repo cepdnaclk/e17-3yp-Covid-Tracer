@@ -76,11 +76,14 @@ All items and costs
 What was achieved, future developments, commercialization plans
 -->
 
+## Supervisors
+-  Dr. Isuru Nawinne, [email](mailto:isurunawinne@eng.pdn.ac.lk)
+-  Dr. Mahanama Wickramasinghe, [email](mailto:mahanamaw@eng.pdn.ac.lk)
+
 ## Team
 -  E/17/252, Kenath Perera, [email](mailto:e17252@eng.pdn.ac.lk)
 -  E/17/044, Deanna Coralage, [email](mailto:e17044@eng.pdn.ac.lk)
 -  E/17/242, Ruchika Perera, [email](mailto:e17242@eng.pdn.ac.lk)
-
 
 ## Links
 
