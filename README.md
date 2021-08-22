@@ -39,11 +39,11 @@ title: Covid Tracer
 Due to the prevailing pandemic situation people have a responsibility of providing accurate details of themselves at entrances of various commercial places like shopping malls, banks etc. and get their temperatures checked and accepted before entering. This situation is currently handled manually by writing details on a book at entrances of various places which is bothersome as well as risky because of everyone touching the same stationary. Even the guards checking temperatures at entrances are at a higher risk of getting in contact with infects daily. Many people neglect going through this process, some even provide inaccurate data. Also there is currently no way of detecting if people under quarantine are in public society. Wouldn't it be better if we can keep track of the places we've visited and reported cases of infects from these places? Adhering to workplace safety and health practices and ensuring access to decent work and the protection of labour rights in all industries will be crucial in addressing the human dimension of the crisis.
 
 ### Our Solution
-A Fully Autonomous Covid-19 Tracking System for a better and safe Sri Lanka\
+A Fully Autonomous Covid-19 Tracking System for a well aware and safe Sri Lanka\
 **Featues of our system**
 - Computerized Database System for Covid Manegement for Government Authorities
 - Various interfaces for Data Entering,Representation and Summarization of data
-- Autonomous Detail Entering at entrances using Smart Card and detection of people under quarantine
+- Autonomous Detail Entering at entrances using barcode scanning of NIC and detection of people under quarantine
 - Automated door sliding system based on temperature, oxygen level parameters of people entering
 - Website for viewing Covid related information. eg:daily cases, cumulative deaths etc.
 - User login to website for viewing personal information: visited locations, reported cases from these locations for a period of 2 weeks, fluctuations of temperature, oxygen level using data obtained at entrances 
@@ -81,6 +81,9 @@ What was achieved, future developments, commercialization plans
 -  E/17/044, Deanna Coralage, [email](mailto:e17044@eng.pdn.ac.lk)
 -  E/17/242, Ruchika Perera, [email](mailto:e17242@eng.pdn.ac.lk)
 
+## Supervisors
+-  Dr. Isuru Nawinne, [email](mailto:isurunawinne@eng.pdn.ac.lk)
+-  Dr. Mahanama Wickramasinghe, [email](mailto:mahanamaw@eng.pdn.ac.lk)
 
 ## Links
 

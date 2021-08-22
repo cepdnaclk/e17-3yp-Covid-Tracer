@@ -33,7 +33,6 @@ CREATE TABLE USER (
 /*  ----------------------------- */
 
 
-
 /*  MERCHANT RELATION   */
 
 CREATE TABLE MERCHANT (
@@ -63,19 +62,17 @@ CREATE TABLE TRACE (
 
 
 
-/*				  VIEWS, TRIGGERS, STORED PROCEDURES			*/
 
 
-/*                          VEHICLE OWNER                       */
 
-/*REGISTER NEW VEHICLE OWNER*/
+/*  VIEWS, TRIGGERS, STORED PROCEDURES  */
+
+/*GET LATEST STATISTICS*/
 DELIMITER $$
-CREATE PROCEDURE REGISTER_VEHICLE_RENTER (IN fn VARCHAR(30), IN mn VARCHAR(30), IN ln VARCHAR(30), IN addr VARCHAR(100),
-                                          IN emailin VARCHAR(50), IN bankin VARCHAR(20), IN branchin VARCHAR(20), IN acc_noin VARCHAR(15))
+CREATE PROCEDURE GET_LATEST_VEHICLE_STAT ()
 BEGIN
 
-    INSERT INTO VEHICLE_OWNER(f_name, m_name, l_name, address, email, registered_date, bank, branch, acc_no) 
-    VALUES (fn, mn, ln, addr, emailin, CURDATE(), bankin, branchin, acc_noin);
+    SELECT * FROM GovernmentUpdates ORDER BY update_timestamp DESC LIMIT 1;
 
 END$$
 DELIMITER ;
@@ -248,12 +245,3 @@ BEGIN
 
 END$$
 DELIMITER ;
-
-/* ------------------------------------------------------------------------------- */
-
-
-/*  POPULATE DATA   */
-/*This is for Testing purpose only. Remove this section  if not for testing*/
-
-
-/* ------------------------------------------------------------------------------- */
