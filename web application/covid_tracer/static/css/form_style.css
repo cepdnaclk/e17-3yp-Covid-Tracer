@@ -10,7 +10,7 @@ html {
 	
 	/*background = gradient + image pattern combo*/
 	background: 
-		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+		linear-gradient(rgba(79, 137, 100, 0.6), rgba(197, 224, 178, 0.6));
 }
 
 body {
@@ -55,7 +55,7 @@ body {
 /*buttons*/
 #msform .action-button {
 	width: 100px;
-	background: #27AE60;
+	background: #4f8964;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -65,7 +65,7 @@ body {
 	margin: 10px 5px;
 }
 #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #C5E0B2;
 }
 /*headings*/
 .fs-title {
@@ -126,6 +126,6 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-	background: #27AE60;
+	background: #4f8964;
 	color: white;
 }
