@@ -1,0 +1,160 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.6;
+	margin: 0px;
+	min-height: 100vh;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+h2,
+h3,
+a {
+	color: #000;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+.logo {
+	margin: 0;
+	font-size: 2.0em;
+}
+
+.main-nav {
+	margin-top: 5px;
+}
+.logo a,
+.main-nav a {
+	padding: 10px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	display: block;
+}
+
+.main-nav a {
+	color: #4f8964;
+	font-size: 1.2em;
+}
+
+.main-nav a:hover {
+	color: #fff;
+}
+
+.header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	width: 100%;
+	margin-left: 0px;
+	border: 1px solid #a2a2a2;
+	/*background-color: #C5E0B2;*/
+	background: linear-gradient(rgba(79, 137, 100, 0.6), rgba(197, 224, 178, 0.6));
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+	.header,
+	.main-nav {
+		display: flex;
+	}
+	.header {
+		flex-direction: column;
+		align-items: center;
+		.header {
+		width: 80%;
+		margin: 0 auto;
+		max-width: 1150px;
+		}
+	}
+
+}
+
+@media (min-width: 1025px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+}
+
+/* ================================= 
+  Stat Section
+==================================== */
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 150px;
+  cursor: pointer;
+  border: black solid 2px;
+}
+
+.card .card_title {
+  text-align: left;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -10px;
+  margin-left: 10px;
+  height: 8px;
+}
+
+.title-text {
+  color: black;
+}
+
+.value {
+	margin-left: 10px;
+	text-align: center;
+  	font-family: sans-serif;
+  	font-weight: bold;
+  	font-size: 20px;
+}
+
+.percentage {
+	text-align: left;
+  	margin-left: 10px;
+  	font-family: sans-serif;
+  	font-weight: bold;
+  	font-size: 20px;
+  	margin-top: -30px;
+}
+
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+.chart {
+	margin: 30px auto;
+  	width: 300px;
+  	height: 150px;
+  	cursor: pointer;
+  	border: black solid 2px;
+}

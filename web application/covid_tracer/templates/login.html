@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}">
+</head>
+
+<body>
+
+    <!-- multistep form -->
+    <form id="msform" action="login" method="POST">
+        {% csrf_token %}
+        <!-- fieldsets -->
+        <fieldset>
+        <h2 class="fs-title">Login</h2>
+        <h3 class="fs-subtitle">Enter your username or NIC number to login</h3>
+        <input type="text" name="username" placeholder="Username/NIC" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="reset" name="previous" class="previous action-button" value="Reset" />
+        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+        <a href="#">Forgot Password ?</a>
+        <div>
+            {% for message in messages %}
+            <p style="color: red;">{{message}}</p>
+            {% endfor %}
+        </div>
+        </fieldset>
+    </form>
+</body>
+</html>
