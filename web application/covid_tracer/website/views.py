@@ -8,3 +8,7 @@ def index(request):
     prev = stats.reverse()[1]
    
     return render(request, "index.html", {'stat': stat, 'stats': stats})
+
+def bla(request):
+
+    return render(request, "index.html")
