@@ -1,32 +1,54 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+
 <head>
-	<title>Login</title>
-	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}">
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
 </head>
 
 <body>
+    <div class="wrapper">
+        <div class="title">Login</div>
 
-    <!-- multistep form -->
-    <form id="msform" action="login" method="POST">
+        <form action="login" method="POST">
         {% csrf_token %}
-        <!-- fieldsets -->
-        <fieldset>
-        <h2 class="fs-title">Login</h2>
-        <h3 class="fs-subtitle">Enter your username or NIC number to login</h3>
-        <input type="text" name="username" placeholder="Username/NIC" />
-        <input type="password" name="password" placeholder="Password" />
-        <input type="reset" name="previous" class="previous action-button" value="Reset" />
-        <input type="submit" name="submit" class="submit action-button" value="Submit" />
-        <a href="#">Forgot Password ?</a>
+
+        <div class="field">
+            <input type="text" name="username" required />
+            <label>Username</label>
+        </div>
+
+        <div class="field">
+            <input type="password" name="password" required />
+            <label>Password</label>
+        </div>
+
+        <div class="content">
+            <div class="checkbox">
+                <input type="checkbox" id="remember-me" />
+                <label for="remember-me">Remember me</label>
+            </div>
+            <div class="pass-link"><a href="#">Forgot password?</a></div>
+        </div>
+
+        <div class="field">
+            <input type="submit" value="Login" />
+        </div>
+
+        <div class="signup-link">Not a member? <a href="register">Register Now</a></div>
+        
         <div>
             {% for message in messages %}
             <p style="color: red;">{{message}}</p>
             {% endfor %}
         </div>
-        </fieldset>
-    </form>
+
+        </form>
+    </div>
+
 </body>
+
 </html>
