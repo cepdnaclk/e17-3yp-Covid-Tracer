@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title">Register</div>
+
+        <form action="confirm" method="POST">
+        {% csrf_token %}
+
+        <div><br>Provide your email/contact number/both</div>
+        <div class="field">
+            <input type="text" name="contact" />
+            <label>Contact Number</label>
+        </div>
+
+        <div class="field">
+            <input type="text" name="email" />
+            <label>Email</label>
+        </div>
+
+        <div><br>You can create a username of your choice. Default will be NIC</div>
+        <div class="field">
+            <input type="text" name="username" />
+            <label>Username</label>
+        </div>
+
+        <div><br>Create a password</div>
+        <div class="field">
+            <input type="password" name="password1" required />
+            <label>Password</label>
+        </div>
+
+        <div class="field">
+            <input type="password" name="password2" required />
+            <label>Confirm Password</label>
+        </div>
+
+        <div class="field">
+            <input type="submit" value="Register" />
+        </div>
+
+        <div class="signup-link">Already a member? <a href="login">Login</a></div>
+        
+        <div>
+            {% for message in messages %}
+            <p style="color: red;">{{message}}</p>
+            {% endfor %}
+        </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

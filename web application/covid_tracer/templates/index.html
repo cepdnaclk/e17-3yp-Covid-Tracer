@@ -1,138 +1,109 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
-  
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
 <head>
+    <meta charset="UTF-8">
     <title>Covid Tracer</title>
-  
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-  
+
 <body>
-
-    <!--Header Section-->
-    <header class="header">
-		<h1 class="logo"><a href="#">covid tracer</a></h1>
-        <ul class="main-nav">
-          <li><a href="accounts/login">LOGIN</a></li>
-          <li><a href="accounts/register">REGISTER</a></li>
-        </ul>
-	</header> 
-
-    <!--Stat Section-->
-    <div class="cards-list">
   
-        <div class="card 1">
-            <div class="card_title title-text">
-                <p>New Cases</p>   
-            </div>
-            <div class="value">
-                <h1>{{stat.new_cases}}</h1>
-            </div>
-            <div class="percentage">   
-                <h4 style="color: rgb(207, 45, 45);">12% Increase</h4>    
-            </div>
-        </div>
-        
-        <div class="card 2">
-            <div class="card_title title-text">
-                <p>New Deaths</p>
-            </div>
-            <div class="value">
-                <h1>{{stat.new_deaths}}</h1>
-            </div>
-            <div class="percentage">
-                <h4>34% Increase</h4>
-            </div>
-        </div>
-        
-        <div class="card 3">  
-            <div class="card_title title-text">
-                <p>Cumulative Cases</p>
-            </div>
-            <div class="value">
-                <h1>{{stat.cumulative_cases}}</h1>
-            </div>
-            <div class="percentage">
-                <h4>34% Increase</h4>
-            </div>
-        </div>
-          
-        <div class="card 4">
-            <div class="card_title title-text">
-                <p>Cumulative Deaths</p>
-            </div>
-            <div class="value">
-                <h1>{{stat.cumulative_deaths}}</h1>
-            </div>
-            <div class="percentage">
-                <h4>34% Increase</h4>
-            </div>
-        </div>
+    <section class="home-section">
 
-    </div>
-    <!--End of card list-->
-    <div>
-        <p style="text-align: right; margin-right:30px;">Last Update: {{stat.update_timestamp}}</p>
-    </div>
+        <nav>
+            <div class=logo>
+                <h1 style="font-size: 40px;">Covid Tracer</h1>
+            </div>
+            <button>Login</button>
+            <button>Register</button> 
+        </nav>
 
-    <!--charts-->
-    <div style="margin-left: 30px; margin-right: 30px;">
-        <h2>Active Cases</h2>
-        <div class="chart-container" style="position: relative; height:60vh; width:93vw">
-            <canvas id="Chart1"></canvas>   
+        <div class="home-content">
+            <div class="overview-boxes">
+
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Order</div>
+                        <div class="number">40,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Sales</div>
+                        <div class="number">38,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Profit</div>
+                        <div class="number">$12,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Return</div>
+                        <div class="number">11,086</div>
+                        <div class="indicator">
+                            <i class='bx bx-down-arrow-alt down'></i>
+                            <span class="text">Down From Today</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--End of boxes-->
+
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">New Cases</div>
+                        <div style="position: relative; width:100%;">
+                            <canvas id="Chart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">New Deaths</div>
+                        <div style="display: center;">
+                            <canvas id="Chart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of graphs-->
+
         </div>
-    </div>
+        <!--End of home-->
 
-    <div style="margin-left: 30px; margin-right: 30px;">
-        <h2>Deaths</h2>
-        <div class="chart-container" style="position: relative; height:60vh; width:93vw">
-            <canvas id="Chart2"></canvas>   
-        </div>
-    </div>
+    </section>
 
-    <div style="margin-left: 30px; margin-right: 30px;">
-        <h2>Cumulative Data</h2>
-        <div class="chart-container" style="position: relative; height:60vh; width:93vw">
-            <canvas id="Chart3"></canvas>   
-        </div>
-    </div>
-
-    <br><br>
-
-    <script>
-        var ctx = document.getElementById('Chart1').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [{% for stat in stats %}'{{stat.update_timestamp}}',{% endfor %}],
-                datasets: [{
-                    label: 'Number of Cases',
-                    data: [{% for stat in stats %}{{stat.new_cases}},{% endfor %}],
-                    backgroundColor: [
-                        'rgb(0, 0, 51)'
-                    ],
-                    borderColor: [
-                        'rgb(0, 0, 51)'
-                    ],
-                    borderWidth: 1,
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                maintainAspectRatio: false,
-            }
-        });
-    </script>
-
+    <!--js scripts-->
+    <script src="{% static 'js/chart.js' %}"></script>
     <script>
         var ctx = document.getElementById('Chart2').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -162,35 +133,6 @@
         });
     </script>
 
-    <script>
-        new Chart(document.getElementById("Chart3"), {
-            type: 'line',
-            data: {
-              labels: [{% for stat in stats %}'{{stat.update_timestamp}}',{% endfor %}],
-              datasets: [{ 
-                  data: [{% for stat in stats %}{{stat.cumulative_cases}},{% endfor %}],
-                  label: "Cases",
-                  borderColor: "#3e95cd",
-                  fill: false
-                }, { 
-                  data: [{% for stat in stats %}{{stat.cumulative_deaths}},{% endfor %}],
-                  label: "Deaths",
-                  borderColor: "#c45850",
-                  fill: false
-                }
-              ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                maintainAspectRatio: false,
-            }
-        });
-    </script>
-
 </body>
-  
+
 </html>
