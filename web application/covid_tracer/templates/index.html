@@ -11,7 +11,27 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Chart js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        button {
+          display: inline-block;
+          justify-content: flex-end;
+          background-color: #4f8964;
+          border-radius: 10px;
+          border: 4px double #cccccc;
+          color: #fff;
+          text-align: center;
+          font-size: 20px;
+          padding: 10px;
+          width: 100px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -22,8 +42,7 @@
             <div class=logo>
                 <h1 style="font-size: 40px;">Covid Tracer</h1>
             </div>
-            <button>Login</button>
-            <button>Register</button> 
+            <button onclick="window.location.href='accounts/login';">Login</button> 
         </nav>
 
         <div class="home-content">
@@ -31,44 +50,44 @@
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Total Order</div>
-                        <div class="number">40,876</div>
+                        <div class="box-topic">New Cases</div>
+                        <div class="number">{{stat.new_cases}}</div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
-                            <span class="text">Up from yesterday</span>
+                            <span class="text">2% Increase</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Total Sales</div>
-                        <div class="number">38,876</div>
+                        <div class="box-topic">New Deaths</div>
+                        <div class="number">{{stat.new_deaths}}</div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
-                            <span class="text">Up from yesterday</span>
+                            <span class="text">10% Increase</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Total Profit</div>
-                        <div class="number">$12,876</div>
+                        <div class="box-topic">Cumulative Cases</div>
+                        <div class="number">{{stat.cumulative_cases}}</div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
-                            <span class="text">Up from yesterday</span>
+                            <span class="text">15% Increase</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Total Return</div>
-                        <div class="number">11,086</div>
+                        <div class="box-topic">Cumulative Deaths</div>
+                        <div class="number">{{stat.cumulative_deaths}}</div>
                         <div class="indicator">
                             <i class='bx bx-down-arrow-alt down'></i>
-                            <span class="text">Down From Today</span>
+                            <span class="text">13% Decrease</span>
                         </div>
                     </div>
                 </div>
@@ -76,12 +95,15 @@
             </div>
             <!--End of boxes-->
 
+            <div style="margin-left: 30px;">
+                <h4>Last Update: {{stat.update_timestamp}}</h4>
+            </div>
+
             <div class="sales-boxes">
                 <div class="recent-sales box">
                     <div class="title">New Cases</div>
-                        <div style="position: relative; width:100%;">
-                            <canvas id="Chart1"></canvas>
-                        </div>
+                    <div style="position: relative; width:100%;">
+                        <canvas id="Chart1" height="400px" ></canvas>
                     </div>
                 </div>
             </div>
@@ -89,9 +111,17 @@
             <div class="sales-boxes">
                 <div class="recent-sales box">
                     <div class="title">New Deaths</div>
-                        <div style="display: center;">
-                            <canvas id="Chart2"></canvas>
-                        </div>
+                    <div style="position: relative; width:100%;">
+                        <canvas id="Chart2" height="400px" ></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">Cumulative Data</div>
+                    <div style="position: relative; width:100%;">
+                        <canvas id="Chart3" height="400px" ></canvas>
                     </div>
                 </div>
             </div>
@@ -103,7 +133,35 @@
     </section>
 
     <!--js scripts-->
-    <script src="{% static 'js/chart.js' %}"></script>
+    <script>
+        var ctx = document.getElementById('Chart1').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for stat in stats %}'{{stat.update_timestamp}}',{% endfor %}],
+                datasets: [{
+                    label: 'Number of Cases',
+                    data: [{% for stat in stats %}{{stat.new_cases}},{% endfor %}],
+                    backgroundColor: [
+                        'rgb(0, 0, 51)'
+                    ],
+                    borderColor: [
+                        'rgb(0, 0, 51)'
+                    ],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
+    
     <script>
         var ctx = document.getElementById('Chart2').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -125,7 +183,36 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: false
+                    }
+                },
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
+
+    <script>
+        new Chart(document.getElementById("Chart3"), {
+            type: 'line',
+            data: {
+              labels: [{% for stat in stats %}'{{stat.update_timestamp}}',{% endfor %}],
+              datasets: [{ 
+                  data: [{% for stat in stats %}{{stat.cumulative_cases}},{% endfor %}],
+                  label: "Cases",
+                  borderColor: "#3e95cd",
+                  fill: false
+                }, { 
+                  data: [{% for stat in stats %}{{stat.cumulative_deaths}},{% endfor %}],
+                  label: "Deaths",
+                  borderColor: "#c45850",
+                  fill: false
+                }
+              ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
                     }
                 },
                 maintainAspectRatio: false,
