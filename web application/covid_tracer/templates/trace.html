@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Covid Tracer</title>
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="logo-details">
+        <span class="logo_name" style="margin-left: 30px;">Covid Tracer</span>
+        </div>
+
+        <ul class="nav-links">
+        <li>
+            <a href="home">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-map' ></i>
+            <span class="links_name">Check a location</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#"  class="active">
+            <i class='bx bx-map-pin' ></i>
+            <span class="links_name">Trace my locations</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-map-alt' ></i>
+            <span class="links_name">Map View</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-bell' ></i>
+            <span class="links_name">Notifications</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-message' ></i>
+            <span class="links_name">Health News</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-info-circle' ></i>
+            <span class="links_name">About Covid Tracer</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">My Account</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Settings</span>
+            </a>
+        </li>
+
+        <li class="log_out">
+            <a href="../website/bla">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+            </a>
+        </li>
+        </ul>
+
+    </div>
+    <!--End of side bar-->
+
+
+    <section class="home-section">
+    
+        <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+
+        <div class="profile-details">
+            <span class="admin_name">{{user.username}}</span>
+        </div>
+        </nav>
+
+        <div class="home-content">
+
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+
+                    <div class="title">Traces</div>
+                    <br>
+                    <div class="sales-details">
+                        <ul class="details">
+                            <li class="topic">Timstamp</li>
+                            <li><a href="#">Aug. 22, 2021, 7.01 p.m.</a></li>
+                            <li><a href="#">Aug. 22, 2021, 9.32 p.m.</a></li>
+                            <li><a href="#">Aug. 23, 2021, 12.56 p.m.</a></li>
+                        </ul>
+
+                        <ul class="details">
+                            <li class="topic">Location</li>
+                            <li><a href="#">Gemma Shopping Mall Kadawatha</a></li>
+                            <li><a href="#">Sampath Bank ATM Mahara</a></li>
+                            <li><a href="#">Texicon Restaurant Kiribathgoda</a></li>
+                        </ul>
+
+                        <ul class="details">
+                            <li class="topic">Infect Percentage %</li>
+                            <li><a href="#">32</a></li>
+                            <li><a href="#">23</a></li>
+                            <li><a href="#">12</a></li>
+                        </ul>
+
+                        <ul class="details">
+                            <li class="topic">Temperature</li>
+                            <li><a href="#">36.9</a></li>
+                            <li><a href="#">37.2</a></li>
+                            <li><a href="#">37.0</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of table-->
+
+    </section>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
