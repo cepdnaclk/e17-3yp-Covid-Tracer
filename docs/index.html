@@ -64,11 +64,11 @@
               <!--<li><a href="#">1</a></li>
               <li><a href="#">2</a></li>-->
               <li><a href="#portfolio">UI/UX</a></li>
-              <li class="dropdown"><a href="#"><span>Hardware Designs</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#hardware-design"><span>Hardware Designs</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Circuit Diagram</a></li>
-                  <li><a href="#">Schematic Design</a></li>
-                  <li><a href="#">PCB Design</a></li>
+                  <li><a href="#circuit-diagram">Circuit Diagram</a></li>
+                  <li><a href="#schematic-design">Schematic Design</a></li>
+                  <li><a href="#pcb-design">PCB Design</a></li>
                 </ul>
               </li> 
               <li><a href="#blog">Conclusion</a></li>
@@ -416,7 +416,7 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline services-head text-center">
-              <h2>Hardware Nodes</h2>
+              <h2>Embedded Hardware Device </h2>
             </div>
           </div>
         </div>
@@ -429,6 +429,10 @@
           </div>
 
           <!-- single-well start-->
+          <div class= "col-md-12 col-sm-12 col-xs-12">
+            <h5><br><br><br>
+              Main Components of the Device<br></h5>
+          </div>
           
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="well-left">
@@ -442,10 +446,9 @@
                     <p>
                         <br>Microcontroller is the base of our device and it should accomplish several task at the same time. 
                         Hence, having a dual core processor in the microcontroller will be efficient to handle those tasks
-                        seperately. Low power consuption is a major concern as it is active 24x7 sometimes. Uninterrupted
-                        internet connection is a must as it connects with the remote server system. Threfore it should contain
-                        a wifi module and gsm module as the backup option. Moreover, the security should be upto the standard.
-                        Due to the above concerns, ESP 32 Sim 800L has been chosen as the microcontroller.  
+                        seperately. Low power consuption is a major concern as it is active 24x7 mostly.
+                         Moreover, the security should be upto the standard.
+                        Due to the above concerns, ESP 32 DOIT board has been chosen as the microcontroller.  
                     </p>
                   </div> 
                 </div>                
@@ -457,17 +460,7 @@
                 <div>
                   <h4 class="sec-head"><br><br>Modules</h4>
                   <div>
-                    <div> 
-                      <h4 class="sec-subhead">GPS module</h4>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <img src="assets/img/hardware/gps module.jpg" alt="gps module">
-                    </div>
-                    <div>
-                      <p>
-                          <br>This Module is used to track the location and it is connected to the microcontroller.
-                      </p>
-                    </div>
+                    
                     <div> 
                       <h5 class="sec-subhead"><br>GSM module</h5>
                     </div>
@@ -481,8 +474,20 @@
                       </p>
                     </div>
                     <div> 
+                      <h4 class="sec-subhead">External Flash Memory</h4>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <img src="assets/img/hardware/flash memory.jpg" alt="flash memory">
+                    </div>
+                    <div>
+                      <p>
+                          <br>W25Q32(4MB) model is used as the external memory to increase the scalability of the device.
+                      </p>
+                    </div>
+                    <div> 
                       <h5 class="sec-subhead"><br>Battery</h5>
                     </div>
+
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/battery.jpg" alt="battery">
                     </div>
@@ -518,15 +523,14 @@
                       </p>
                     </div>
                     <div> 
-                      <h5 class="sec-subhead"><br>Ultrasonic sensor</h5>
+                      <h5 class="sec-subhead"><br>Ultrasonic Sensor</h5>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/ultrasonic sensor.jpg" alt="ultrasonic sensor">
                     </div>
                     <div>
                       <p>
-                          <br>This sensor is used to detect that a person is standing in front of the device and to
-                          generate an interrupt signal to start the process.
+                          <br>This sensor is used to detect the distance from IR sensor to hand and to the execution of sanitizing unit.
                       </p>
                     </div>
                     <div> 
@@ -576,7 +580,6 @@
             
 
           </div>
-          -->
         </div>    
       </div>
     </div><!-- End Hardware Section -->
@@ -885,7 +888,7 @@
 
 
     <!-- ======= Hardware design Section ======= -->
-    <div id="database" class="about-area area-padding">
+    <div id="hardware-design" class="about-area area-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -894,26 +897,34 @@
             </div>
           </div>
         </div>  
-        <div class="row">
+        <div id ="circuit-diagram" class="row">
           <div class="well-middle">
             <h4 class="sec-head"><br>Circuit Diagram</h4>
             <img src="assets/img/solution/circuit.png" alt="world due to covid" class="center-highlevel" />
           </div>      
         </div>
-        <div class="row">
+        <div id="schematic-design" class="row">
           <div class="well-middle">
             <h4 class="sec-head"><br>Schematic Design</h4>
             <img src="assets/img/solution/Schematic_module.png" alt="world due to covid" class="center-highlevel" />
           </div>      
         </div>
-        <div class="row">
-          <div class="well-middle">
-            <h4 class="sec-head"><br>PCB Design</h4>
-            <img src="assets/img/solution/PCB design.png" alt="world due to covid" class="center-highlevel" />
-          </div>      
+        <div id="pcb-design" class="row">
+          <h4 class="sec-head"><br>PCB Design</h4>
+          <div class="col-md-6 col-sm-3 col-xs-12 portfolio-item filter-card">
+            <div class = "well-middle">
+              <img src="assets/img/solution/PCB design.png" alt="world due to covid" class="center-highlevel" />
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-4 col-xs-12 portfolio-item filter-card">
+            <div class = "well-middle">
+              <img src="assets/img/solution/3d view of pcb.png" alt="world due to covid" class="center-highlevel" />
+            </div>
+          </div>
+
         </div>
       </div>
-    </div><!-- End Database Section -->
+    </div><!-- End Hardware Section -->
 
 
     <!-- ======= Pricing Section ======= -->
