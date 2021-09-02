@@ -60,21 +60,21 @@
           <li class="dropdown"><a href="#"><span>Design
           </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Database System</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-                <li class="dropdown"><a href="#"><span>3</span> <i class="bi bi-chevron-right"></i></a>
-                  <ul>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                  </ul>
-                </li> 
-              <li><a href="#portfolio">Gallery</a></li>
+              <li><a href="#database">Database System</a></li>
+              <!--<li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>-->
+              <li><a href="#portfolio">UI/UX</a></li>
+              <li class="dropdown"><a href="#"><span>Hardware Designs</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Circuit Diagram</a></li>
+                  <li><a href="#">Schematic Design</a></li>
+                  <li><a href="#">PCB Design</a></li>
+                </ul>
+              </li> 
               <li><a href="#blog">Conclusion</a></li>
             </ul>
           </li> 
-          <li><a href="test.html">Testing</a></li>
+          <li><a href="#">Testing</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -115,7 +115,7 @@
           <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/product_video.mp4)">
             <div class="carousel-container">
               <div class="container">
-                <video controls="autoplay" width="1000" height="750"  preload="true" >
+                <video controls="autoplay" width="100%" height="500"  preload="true" >
                   <source src="assets/img/hero-carousel/product_video.mp4" type="video/mp4" />
                 </video>
               </div>
@@ -262,7 +262,7 @@
                   <p>
                     Details about the person will be entered to the system by scanning the barcode of NIC, system will detect if the 
                     person is under quarantine. The temperature will be measured using sensors. These temperature measurements along 
-                    with the visited location will be sent to the server and stored for a 2 weeks period. Ypur privacy will be highly protected
+                    with the visited location will be sent to the server and stored for a 2 weeks period. Your privacy will be highly protected
                   </p>
                 </div>
               </div>
@@ -381,8 +381,7 @@
             <p>
               <i class="bi bi-dot"></i>A software for data entering, data representing along with a computerized database system will be provided to the
               Government. They maintain detailed Covid related information like infects, pcr test reports,people under quarantine etc. in their 
-              server system. As a third party our system needs to access these information. We will have APIs connnected to the Government's 
-              system to efectively interact. Also any suspicious activities can be detected by the Government through API keys
+              server system. Our database system will be updated on certain intervals with the Government Server through a REST API.
             </p>
             <p>
               <i class="bi bi-dot"></i>Our server system will be deployed in the cloud. We will keep information about people's ID numbers, 
@@ -423,14 +422,14 @@
         </div>
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <video width="1000" height="750" controls="controls" preload="true" >
+            <br>
+            <video width="100%" height="550px" controls="controls" preload="true" >
               <source src="assets/img/hardware/covid tracer v19.mp4" type="video/mp4" />
             </video>
           </div>
-          
 
           <!-- single-well start-->
-          <!--
+          
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="well-left">
               <div class="single-well">
@@ -500,8 +499,8 @@
             </div> 
 
           </div>
-          -->
-          <!-- single-well end
+          
+          <!-- single-well end-->
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="well-middle">
                 <div>
@@ -581,6 +580,259 @@
         </div>    
       </div>
     </div><!-- End Hardware Section -->
+
+
+    <!-- ======= Database Section ======= -->
+    <div id="database" class="about-area area-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Database System</h2>
+            </div>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="well-middle">
+            <h4 class="sec-head"><br>Conceptual Schema</h4>
+            <img src="assets/img/solution/Conceptual Schema-System.png" alt="world due to covid" class="center-highlevel" />
+          </div>      
+        </div>
+        <div class="row">
+          <div class="well-middle">
+            <h4 class="sec-head"><br>Logical Schema</h4>
+            <img src="assets/img/solution/Logical Schema-System.png" alt="world due to covid" class="center-highlevel" />
+          </div>      
+        </div>
+      </div>
+    </div><!-- End Database Section -->
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <div id="portfolio" class="portfolio-area area-padding fix">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>UI/UX</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row wesome-project-1 fix">
+          <!-- Start Portfolio -page -->
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul id="portfolio-flters">
+              <li data-filter=".*" class="filter-active">all</li>
+              <li data-filter=".filter-app">web</li>
+              <li data-filter=".filter-card">app</li>
+              <li data-filter=".filter-web">app</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row awesome-project-content portfolio-container">
+
+          <!-- portfolio-item start 
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/1.jpg" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/1.jpg">
+                      <h4>Business City</h4>
+                      <span>Web Development</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           portfolio-item end -->
+
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/register 1.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/register 1.png">
+                      <h4>Register</h4>
+                      <span>Step 1</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+          
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/splash screen.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/splash screen.png">
+                      <h4>Home Page</h4>
+                      <span>App</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/login.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/login.png">
+                      <h4>Login Page</h4>
+                      <span>App</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/main menu.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/main menu.png">
+                      <h4>Main Menu</h4>
+                      <span>App</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/settings.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/settings.png">
+                      <h4>Settings</h4>
+                      <span>App</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/register 2.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/register 2.png">
+                      <h4>Register</h4>
+                      <span>Step 2</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+
+          <!-- portfolio-item start 
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#">
+                  <video controls="autoplay" width="100%" height="500"  preload="true" >
+                    <source src="assets/img/portfolio/demo.mp4" type="video/mp4" />
+                  </video>
+                </a>
+                <div class="add-actions text-center text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/demo.mp4">
+                      <h4>Web Application</h4>
+                      <span>Demonstration</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          portfolio-item end -->
+
+          <!-- portfolio-item start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="assets/img/portfolio/register 3.png" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/register 3.png">
+                      <h4>Register</h4>
+                      <span>Step 3</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item end -->
+
+        </div>
+      </div>
+    </div><!-- End Portfolio Section -->
+
+
+    <!-- ======= Hardware design Section ======= -->
+    <div id="database" class="about-area area-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Hardware Designs</h2>
+            </div>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="well-middle">
+            <h4 class="sec-head"><br>Circuit Diagram</h4>
+            <img src="assets/img/solution/circuit.png" alt="world due to covid" class="center-highlevel" />
+          </div>      
+        </div>
+        <div class="row">
+          <div class="well-middle">
+            <h4 class="sec-head"><br>Schematic Design</h4>
+            <img src="assets/img/solution/Schematic_module.png" alt="world due to covid" class="center-highlevel" />
+          </div>      
+        </div>
+        <div class="row">
+          <div class="well-middle">
+            <h4 class="sec-head"><br>PCB Design</h4>
+            <img src="assets/img/solution/PCB design.png" alt="world due to covid" class="center-highlevel" />
+          </div>      
+        </div>
+      </div>
+    </div><!-- End Database Section -->
 
 
     <!-- ======= Pricing Section ======= -->
@@ -707,9 +959,6 @@
       </div>
     </div><!-- End Timeline Section -->
 
-
-
- 
 
     <!-- ======= Blog Section ======= -->
     <div id="blog" class="blog-area">
