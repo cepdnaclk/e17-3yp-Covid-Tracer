@@ -52,7 +52,7 @@
             <ul>
               <li><a href="#high-level">High Level</a></li>
               <li><a href="#hardware">Hardware</a></li>
-              <li><a href="#">Security</a></li>
+              <li><a href="#security">Security</a></li>
               <li><a href="#pricing">Budget</a></li>
               <li><a href="#timeline">Timeline</a></li>  
             </ul>
@@ -585,6 +585,74 @@
     </div><!-- End Hardware Section -->
 
 
+    <!-- ======= Security Section ======= -->
+    <div id="security" class="about-area area-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Security Aspects</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- single-well start-->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="well-left">
+              <div class="single-well">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <img src="assets/img/solution/cia.jpg" style="width: 70%;" alt="cia">
+                </div>
+              </div>
+            </div> 
+          </div>
+          <!-- single-well end-->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="well-middle">
+              <div class="single-well">
+                <h4 class="sec-head">Why is it important?</h4>
+                <p>
+                  For any system it's crucial to pay attention to the security aspects. No system can be automatically immune. 
+                  If we don’t consider this seriously, the impact and recoveries can be very expensive. <br><br>Looking from the perspective of the CIA triad,
+                  <br><br><strong>Availability</strong> is necessary because the system mostly works 24/7 and the whole entrace system of the country depends on it.
+                  If the system is not available the effects can be very significant.
+                  <br><br><strong>Confidentiality </strong>also plays a major role as we handle sensitive data. Only the authorized people should be able to see the data.
+                  <br><br><strong>Integrity</strong> is necessary because if the data is modified without the knowledge of authorized people, it can break trust of people
+                  towards the system. Imagine providing inaccurate health details to people!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>   
+        <div class="row">
+          <div class="well-middle">
+            <h4 class="sec-head"><br><br>what are the sensitive data that needs to be secured?</h4>
+            <p>
+              We keep personal details about people like full name, NIC, address, contact details, locations they have visited, health details like temperatures and oxygen levels.
+              Ensuring the Confidentiality and the Integrity of these data are crucial. If we encounter data breaches it can lead to Indentity theft incidents. Identity theft is using another
+              person's personal identifying information. If an attacker gets access to a target's user account, he can enter different locations using the target's identity.
+              This can even result in Ransomware attacks.
+            </p>
+          </div>      
+        </div> 
+        <div class="row">
+          <!-- single-well start-->
+          <div class="col-md-12 col-sm-6 col-xs-12">
+            <div class="well-middle">
+              <div class="single-well">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  
+                  <img src="assets/img/solution/security.png" style="width: 80%;" alt="sensitive data" class="center-highlevel">
+                </div>
+              </div>
+            </div> 
+          </div>
+          <!-- single-well end-->
+        </div>    
+      </div>
+    </div><!-- End Security Section -->
+
+
     <!-- ======= Database Section ======= -->
     <div id="database" class="about-area area-padding">
       <div class="container">
@@ -597,13 +665,26 @@
         </div>  
         <div class="row">
           <div class="well-middle">
-            <h4 class="sec-head"><br>Conceptual Schema</h4>
-            <img src="assets/img/solution/Conceptual Schema-System.png" alt="world due to covid" class="center-highlevel" />
-          </div>      
-        </div>
+            <h4>Conceptual Schema- ER Diagram</h4>
+            <img src="assets/img/solution/Conceptual Schema-System.png" style="width:100%;" alt="world due to covid" class="center-highlevel" />
+            <p><br>
+              This is the er diagram of the relational database of our system. Below is a description of each entity
+              <ul>
+                <li><strong>MERCHANT-</strong>Commercial Merchants can register to our System and they will be provided with an IoT device with the Unique serial number.
+                Their details will be kept in the Merchant entity</li>
+                <li><br><strong>LOCAL_COMMUNITY-</strong>When people enter into locations scanning their NIC, full details of the person will be entered into this relation</li>
+                <li><br><strong>TRACE-</strong>We will be keeping track of the locations people visit for a 2 weeks period along with the temperature measurements obtained</li>
+                <li><br><strong>USER-</strong>When people register to our system they will be added to the user relation. Automated details facility
+                is provided for anyone despite of whether they are registered or not. The registered users have the aditional facility of viewing their traces
+                and getting infect percentages</li>
+                <li><br><strong>UNDER_QUARANTINE, INFECT-</strong>Our database will be updated with the Government through a REST API to get Covid related information
+                and details about people under quarantine and infects during certain time intervals</li>
+              </ul> 
+            </p>
+          </div>
         <div class="row">
           <div class="well-middle">
-            <h4 class="sec-head"><br>Logical Schema</h4>
+            <h4><br>Logical Schema</h4>
             <img src="assets/img/solution/Logical Schema-System.png" alt="world due to covid" class="center-highlevel" />
           </div>      
         </div>
