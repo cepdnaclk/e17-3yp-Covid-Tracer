@@ -37,8 +37,7 @@ class CustomAccountManager(BaseUserManager):
 
 class RegisteredUser(AbstractBaseUser, PermissionsMixin):
 
-    #nic = models.OneToOneField(LocalCommunity, on_delete=models.CASCADE)
-    nic = models.CharField(max_length=15)
+    nic = models.ForeignKey(LocalCommunity, on_delete=models.CASCADE)
     username = models.CharField(primary_key=True, max_length=30, default=nic)
     #password is by default there
     email = models.EmailField(max_length=50, null=True, blank=True)
