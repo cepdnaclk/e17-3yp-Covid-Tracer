@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from accounts.models import RegisteredUser
+from accounts.models import LocalCommunity, RegisteredUser
 from django.contrib.auth.models import auth
 
 import cv2
@@ -70,7 +70,8 @@ def confirm(request):
 
     if request.method=='POST':
 
-        nic = request.session['nic']
+        nicid = request.session['nic']
+        nic = LocalCommunity.objects.get(nic=nicid)
         contact_number = request.POST['contact']
         email = request.POST['email']
         username = request.POST['username']
