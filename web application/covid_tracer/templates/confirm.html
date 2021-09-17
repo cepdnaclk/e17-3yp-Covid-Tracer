@@ -11,29 +11,21 @@
 
 <body>
     <div class="wrapper">
-        <div class="title">Register</div>
+        <div class="title">Create Account</div>
 
         <form action="confirm" method="POST">
         {% csrf_token %}
 
-        <div><br>Provide your email/contact number/both</div>
         <div class="field">
-            <input type="text" name="contact" />
-            <label>Contact Number</label>
+            <input type="text" name="contact" required/>
+            <label>Contact Number: 7xxxxxxxx</label>
         </div>
 
         <div class="field">
-            <input type="text" name="email" />
-            <label>Email</label>
-        </div>
-
-        <div><br>You can create a username of your choice. Default will be NIC</div>
-        <div class="field">
-            <input type="text" name="username" />
+            <input type="text" name="username" required/>
             <label>Username</label>
         </div>
 
-        <div><br>Create a password</div>
         <div class="field">
             <input type="password" name="password1" required />
             <label>Password</label>
