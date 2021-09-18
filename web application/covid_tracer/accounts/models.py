@@ -38,8 +38,6 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
 
     nic = models.OneToOneField(LocalCommunity, on_delete=models.CASCADE)
     username = models.CharField(primary_key=True, max_length=30, default=nic)
-    #password is by default there
-    #email = models.EmailField(max_length=50, null=True, blank=True)
     contact_number = models.CharField(max_length=9, null=True, blank=True)
     joined_date = models.DateTimeField(auto_now_add=True)
 

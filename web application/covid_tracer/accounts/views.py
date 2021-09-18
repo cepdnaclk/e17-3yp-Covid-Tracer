@@ -16,6 +16,11 @@ def login(request):
 
     if request.method=='POST':
 
+        status, secs = throttle(request)
+        if status:
+            messages.error(request, f'Maximum Rate Exceeded. Wait for {secs}s')
+            return redirect('login')
+
         username = request.POST['username']
         pswrd = request.POST['password']
         user = auth.authenticate(username=username, password=pswrd)
@@ -25,10 +30,17 @@ def login(request):
             #check if phone is verified
             profile = Profile.objects.filter(user=user)
             if not profile.is_verified:
-                request.session['profile'] = profile
                 contact_number = user.contact_number
-                send_otp(contact_number, otp)
-                return redirect('otp')
+                otp = str(random.randint(100000, 999999))
+                status, secs = send_otp(contact_number, otp)
+                if not status:
+                    messages.error(request, f'Try again in {secs}')
+                    return redirect('otp')
+                else:
+                    request.session['profile'] = profile
+                    profile.otp = otp
+                    profile.save(['otp'])
+                    return redirect('otp')
 
             auth.login(request, user)
             return render(request, 'home.html', {'user': user})
@@ -46,11 +58,21 @@ def register(request):
 
     if request.method=='POST':
 
-        nic = request.POST['nic']
-        check_nic = RegisteredUser.objects.filter(nic=LocalCommunity.objects.get(nic=nic))
-        if check_nic:
-            messages.error(request, "*NIC already exists")
+        status, secs = throttle(request)
+        if status:
+            messages.error(request, f'Maximum Rate Exceeded. Wait for {secs}s')
             return redirect('register')
+
+        nic = request.POST['nic']
+        nic2 = LocalCommunity.objects.filter(nic=nic)
+        if nic2 is None:
+            lc = LocalCommunity(nic=nic)
+            lc.save()
+        else:
+            check_nic = RegisteredUser.objects.filter(nic=nic2)
+            if check_nic is None:
+                messages.error(request, "*NIC already exists")
+                return redirect('register')
 
         img_nic = request.FILES['nicimg']
         filestr = img_nic.read()
@@ -99,12 +121,15 @@ def confirm(request):
         user.save()
 
         otp = str(random.randint(100000, 999999))
+        status, secs = send_otp(contact_number, otp)
+        if not status:
+            messages.error(request, f'Try again in {secs}')
+            return redirect('otp')
         profile = Profile(user=user, otp=otp)
         profile.save()
         request.session['profile'] = profile
-        send_otp(contact_number, otp)
+        request.session['contact_number'] = contact_number
         return redirect('otp')
-    
     else:
         return render(request, 'confirm.html')
 
@@ -138,6 +163,41 @@ def otp(request):
 
     else:
         return render(request, 'otp.html')
+
+
+def patch(request):
+
+    profile = request.session['profile']
+    contact_number = request.session['contact_number']
+    otp = str(random.randint(100000, 999999))
+    status, secs = send_otp(contact_number, otp)
+    if not status:
+        messages.error(request, f'Try again in {secs}')
+        return redirect('otp')
+
+    else:
+        request.session['profile'] = profile
+        return redirect('otp')
+
+
+def throttle(request):
+
+    forwarded = request.META.get('HTTP_X_FORWARDED_FOR')
+    if forwarded:
+        ip = forwarded.split(',')[-1].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+
+    if cache.get(ip):
+        total_calls = cache.get(ip)
+        if total_calls>5:
+            return True, cache.ttl(ip)
+        else:
+            cache.set(ip, total_calls+1)
+            return False, 0
+    
+    cache.set(ip, 1, timeout=60)
+    return False, 0
 
 
 def trace(request):
