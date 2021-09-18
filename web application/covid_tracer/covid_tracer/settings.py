@@ -70,6 +70,17 @@ TEMPLATES = [
     },
 ]
 
+# django-redis
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
 WSGI_APPLICATION = 'covid_tracer.wsgi.application'
 
 AUTH_USER_MODEL = 'accounts.RegisteredUser'
@@ -138,3 +149,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
