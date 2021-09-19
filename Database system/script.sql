@@ -44,14 +44,15 @@ CREATE TABLE MERCHANT (
 /*  ----------------------------- */
 
 
+
+
 /*  TRACE RELATION    */
 
 CREATE TABLE TRACE (
-    serial_no CHAR(8) NOT NULL,
-    nic CHAR(10) NOT NULL,
     date DATE NOT NULL ,
     arrival_time TIME NOT NULL,
-    exit_time TIME NOT NULL,
+    serial_no CHAR(8) NOT NULL,
+    nic CHAR(12) NOT NULL,
     temperature DECIMAL(3,1),
     PRIMARY KEY (serial_no, nic, date, arrival_time),
     FOREIGN KEY (nic) REFERENCES LOCAL_COMMUNITY(nic),
@@ -60,7 +61,116 @@ CREATE TABLE TRACE (
 /*  ----------------------------- */
 
 
+/*  UNDER_QUARANTINE RELATION   */
 
+CREATE TABLE UNDER_QUARANTINE (
+    CONTACT INT(1) NOT NULL,
+    start_date DATE NOT NULL,
+    nic CHAR(12) NOT NULL,
+    update_time_stamp DATETIME NOT NULL,
+    PRIMARY KEY (start_date,nic,update_time_stamp),
+    FOREIGN KEY (nic) REFERENCES LOCAL_COMMUNITY(nic)     );
+
+/*  ----------------------------- */
+
+
+/*  INFECT RELATION   */
+
+CREATE TABLE INFECT (
+    update_time_stamp DATETIME NOT NULL,
+    variant VARCHAR(20) NOT NULL,
+    tested_date Date NOT NULL,
+    nic CHAR(12) NOT NULL,
+    PRIMARY KEY (update_time_stamp,tested_date,nic) ,
+    FOREIGN KEY (nic) REFERENCES LOCAL_COMMUNITY(nic)     );
+
+/*  ----------------------------- */
+
+
+SELECT serial_no, date,arrival_time FROM TRACE WHERE nic = "123456789123" GROUP BY serial_no;
+
+
+
+
+
+INSERT INTO LOCAL_COMMUNITY VALUES 
+("123456789123","Nimal Perera","M","sdsfd gfdgfgfh"),
+("123456789124","Sandun Perera","M","sdfgfghj gfdgfgfh"),
+("123456789125","Nihal Perera","M","sdfgfghjyy gfdgfgfh"),
+("123456789126","Danuth Perera","M","sdfgftyghj gfdgfgfh");
+
+
+INSERT INTO MERCHANT VALUES
+    ("bbb12323","Foodcity","Gampaha"),
+    ("bbb12324","Nolimit","Nugegoda"),
+    ("bbb12325","FashionBug","Ja-Ela");
+
+INSERT INTO TRACE VALUES
+    ('2021-09-17','10:00:00',"bbb12324", "123456789124", 36.5),
+    ('2021-09-17','10:00:00',"bbb12325", "123456789123", 36.5),
+    ('2021-09-17','10:20:00',"bbb12324", "123456789123", 36.5),
+    ('2021-09-17','10:50:00',"bbb12325", "123456789124", 36.5),
+    ('2021-09-18','10:50:00',"bbb12324", "123456789124", 36.5),
+    ('2021-09-18','11:00:00',"bbb12324", "123456789123", 36.5),
+    ('2021-09-19','12:00:00',"bbb12324", "123456789125", 36.5),
+    ('2021-09-19','13:00:00',"bbb12324", "123456789126", 36.5);
+
+
+INSERT INTO UNDER_QUARANTINE VALUES
+    (1,'2021-09-17',"123456789124",CURDATE());
+
+INSERT INTO INFECT VALUES
+    (CURDATE(),"beeta",'2021-09-17',"123456789124"),
+    (CURDATE(),"beeta",'2021-09-18',"123456789123");
+
+
+DELIMITER $$
+CREATE PROCEDURE PERCENTAGE_CALC (IN nic_no CHAR(12))
+BEGIN
+SELECT location, percentage FROM(
+SELECT A.serial_no,infect_count,total, (infect_count / total)*100 AS percentage
+FROM(
+    SELECT TRACE.serial_no,COUNT(DISTINCT nic) AS total FROM TRACE JOIN (SELECT* FROM (SELECT serial_no, date,arrival_time FROM TRACE WHERE nic = nic_no ORDER BY date ASC, arrival_time ASC) AS sub GROUP BY serial_no) s
+    ON TRACE.serial_no=s.serial_no WHERE s.date<TRACE.date OR (s.date=TRACE.date AND s.arrival_time<=TRACE.arrival_time) GROUP BY TRACE.serial_no ) AS A
+JOIN 
+(SELECT TRACE.serial_no,COUNT(DISTINCT nic) AS infect_count FROM TRACE JOIN (SELECT* FROM (SELECT serial_no, date,arrival_time FROM TRACE WHERE nic = nic_no ORDER BY date ASC, arrival_time ASC) AS sub GROUP BY serial_no) s
+    ON TRACE.serial_no=s.serial_no WHERE (s.date<TRACE.date OR (s.date=TRACE.date AND s.arrival_time<=TRACE.arrival_time)) AND nic IN
+
+(SELECT nic FROM (
+    SELECT nic FROM INFECT
+    UNION 
+    SELECT nic FROM UNDER_QUARANTINE
+) a WHERE nic IN (SELECT DISTINCT nic FROM TRACE JOIN (SELECT* FROM (SELECT serial_no, date,arrival_time FROM TRACE WHERE nic = nic_no ORDER BY date ASC, arrival_time ASC) AS sub GROUP BY serial_no) s
+    ON TRACE.serial_no=s.serial_no WHERE s.date<TRACE.date OR (s.date=TRACE.date AND s.arrival_time<=TRACE.arrival_time)
+)) GROUP BY TRACE.serial_no) AS B ON A.serial_no = B.serial_no) AS T1
+
+JOIN
+(SELECT serial_no, location FROM MERCHANT) AS T2 ON T2.serial_no = T1.serial_no;
+
+END$$
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+CREATE PROCEDURE PERCENTAGE_CALC(IN  , IN customer CHAR(10), IN bookdate DATE, IN returndate DATE)
+BEGIN
+
+    DECLARE pack CHAR(7);
+    SET pack =  (SELECT pack_id FROM PACKAGE 
+                WHERE PACKAGE.vehicle_category = (SELECT category FROM VEHICLE WHERE id = vehicle)
+                AND pack_name LIKE 
+                CASE WHEN DATEDIFF(returndate, bookdate) < 5 THEN '%Daily'
+                      WHEN DATEDIFF(returndate, bookdate) >=5 AND  DATEDIFF(returndate, bookdate) < 21 THEN '%Weekly'
+                      ELSE '%Monthly' END );
+    
+
+    INSERT INTO BOOKING(booking_done_date, packID, vehicleID, customerNIC, booked_date, return_date, completed)
+    VALUES (CURDATE(), pack, vehicle, customer, bookdate, returndate, 'N');
+
+END$$
+DELIMITER ;
 
 
 
