@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from accounts.models import LocalCommunity, RegisteredUser, Profile
+from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
 from django.contrib.auth.models import auth
 
 import cv2
@@ -10,6 +10,7 @@ from django.core.files.storage import FileSystemStorage
 
 import random
 from django.core.cache import cache
+from django.db import connection
 
 
 def login(request):
@@ -46,11 +47,13 @@ def login(request):
             return render(request, 'home.html', {'user': user})
 
         else:
+            
             messages.error(request, '*Invalid Username/NIC or Password')
             return redirect('login')
 
     else:
-        return render(request, 'login.html')
+        result = calc()
+        return render(request, 'login.html',{'TraceLocation':result})
     
     
 
@@ -205,3 +208,14 @@ def trace(request):
 
 def logout(request):
     return render(request, '/')
+
+
+
+
+
+def calc():
+    cursor = connection.cursor()
+    cursor.execute("call PERCENTAGE_CALC('123456789123')")
+    result = cursor.fetchall()
+    print(result)
+    return (result)

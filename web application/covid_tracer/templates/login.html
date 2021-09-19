@@ -15,6 +15,22 @@
 
         <form action="login" method="POST">
         {% csrf_token %}
+        <div>
+        <table>
+        <tr>
+            <th>Location</th>
+            <th>Percentage</th>
+        </tr>
+        {% for results in TraceLocation%}
+        <tr>
+            <td>{{results.0}}</td>
+            <td>{{results.1}}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+
+        </div>
 
         <div class="field">
             <input type="text" name="username" required />
