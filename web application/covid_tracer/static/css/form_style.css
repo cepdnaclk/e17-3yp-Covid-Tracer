@@ -130,3 +130,27 @@ form .pass-link a:hover,
 form .signup-link a:hover{
   text-decoration: underline;
 }
+
+form .isa-error {
+  color: red;
+  background-color: #FFD2D2;
+}
+
+form .isa-error i {
+  margin:10px 22px;
+  font-size:2em;
+  vertical-align:middle;
+  color: red;
+}
+
+form .isa-success {
+  color: green;
+  background-color: lightgreen;
+}
+
+form .isa-sucess i {
+  margin:10px 22px;
+  font-size:2em;
+  vertical-align:middle;
+  color: green;
+}

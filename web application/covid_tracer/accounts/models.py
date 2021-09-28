@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import RegexValidator
+import json
 
 
 class LocalCommunity(models.Model):
@@ -36,7 +37,7 @@ class CustomAccountManager(BaseUserManager):
 
 class RegisteredUser(AbstractBaseUser, PermissionsMixin):
 
-    nic = models.OneToOneField(LocalCommunity, on_delete=models.CASCADE)
+    nic = models.ForeignKey(LocalCommunity, on_delete=models.CASCADE)
     username = models.CharField(primary_key=True, max_length=30, default=nic)
     contact_number = models.CharField(max_length=9, null=True, blank=True)
     joined_date = models.DateTimeField(auto_now_add=True)
@@ -49,7 +50,6 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self) -> str:
         return self.username
-
 
 
 class Profile(models.Model):
