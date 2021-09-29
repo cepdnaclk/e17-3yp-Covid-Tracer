@@ -96,7 +96,7 @@ class _HomeScreen extends State<HomeScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/second');
+                      Navigator.pushNamed(context, '/login');
                     },
                   )),
               Center(
