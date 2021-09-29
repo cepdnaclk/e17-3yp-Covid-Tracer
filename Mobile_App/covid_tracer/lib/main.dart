@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'login_page.dart';
+import 'registration1_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -17,6 +18,7 @@ void main() {
       '/': (context) => const HomeScreen(),
       // When navigating to the "/second" route, build the SecondScreen widget.
       '/login': (context) => const LoginScreen(),
+      '/register1': (context) => const RegisterScreen1(),
     },
   ));
 }
