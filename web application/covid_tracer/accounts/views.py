@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
@@ -43,6 +44,7 @@ def login(request):
             return redirect('login')
 
     else:
+        print(request.META) 
         return render(request, 'login.html')
     
     
@@ -226,17 +228,20 @@ def home(request) :
     return render(request, 'home.html')
 
 def trace(request):
-    return render(request, 'trace.html')
+
+    result = calc(request)
+    return render(request, 'trace.html',{'TraceLocation':result})
+
 
 def logout(request):
     auth.logout(request)
     return redirect('login')
 
 
-
-def calc():
+def calc(request):
+    user=request.user
+    print(user.nic.nic)
     cursor = connection.cursor()
-    cursor.execute("call PERCENTAGE_CALC('123456789123')")
+    cursor.execute("call PERCENTAGE_CALC(%(nic)s)",{ 'nic': user.nic.nic })
     result = cursor.fetchall()
-    print(result)
     return (result)
