@@ -13,7 +13,6 @@ class LocalCommunity(models.Model):
         managed = False
         db_table = 'LocalCommunity'
 
- 
 
 
 class CustomAccountManager(BaseUserManager):
@@ -34,6 +33,7 @@ class CustomAccountManager(BaseUserManager):
 
         other_fields.setdefault('is_superuser', True)
         return self.create_user(nic, username, password, contact_number, **other_fields)
+
 
 
 class RegisteredUser(AbstractBaseUser, PermissionsMixin):
@@ -59,6 +59,7 @@ class Profile(models.Model):
     user = models.OneToOneField(RegisteredUser, on_delete=models.CASCADE)
     otp = models.CharField(max_length=6, null=True, blank=True)
     is_verified = models.BooleanField(default=False)
+
 
 
 class TraceLocation(models.Model):
