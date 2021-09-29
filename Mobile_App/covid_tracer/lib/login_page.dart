@@ -86,7 +86,7 @@ class _LoginScreen extends State<LoginScreen> {
                                 fontSize: 20),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                //Navigator.pushNamed(context, '/second');
+                                Navigator.pushNamed(context, '/register1');
                               })
                       ])),
                 )
