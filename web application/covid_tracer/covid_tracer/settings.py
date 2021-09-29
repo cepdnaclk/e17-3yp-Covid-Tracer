@@ -96,7 +96,7 @@ DATABASES = {
         'USER' : 'admin',
         'PASSWORD' : 'sunshine',
         'HOST' : 'covid-tracer.cgqjj1pphhck.us-east-1.rds.amazonaws.com',
-        'PORT' : '3306'
+        'PORT' : '3306'    
     }
 }
 

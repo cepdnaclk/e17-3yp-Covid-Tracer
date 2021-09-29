@@ -7,6 +7,10 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -35,16 +39,17 @@
         </div>
 
         <div class="field">
-            <input type="submit" value="Login" />
+            <input id="loginsubmit" type="submit" value="Login" />
         </div>
 
         <div class="signup-link">Not a member? <a href="register">Register Now</a></div>
         
-        <div>
+        <div class="isa_error">
             {% for message in messages %}
-            <p style="color: red;">{{message}}</p>
+            <i class="bx bx-error"></i>
+            {{message}}
             {% endfor %}
-        </div>
+       </div>
 
         </form>
     </div>
