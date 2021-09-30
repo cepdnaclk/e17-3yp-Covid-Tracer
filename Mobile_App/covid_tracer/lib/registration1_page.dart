@@ -87,7 +87,8 @@ class _RegisterScreen1 extends State<RegisterScreen1> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     onPressed: () {
-                      //Navigator.pushNamed(context, '/');
+                      //to do
+                      Navigator.pushNamed(context, '/register2');
                     },
                   ))
             ]),
