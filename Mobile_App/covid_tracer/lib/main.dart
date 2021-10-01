@@ -5,6 +5,7 @@ import 'registration1_page.dart';
 import 'registration2_page.dart';
 import 'registration3_page.dart';
 import 'main_menu.dart';
+import 'settings.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,6 +26,7 @@ void main() {
       '/register2': (context) => const RegisterScreen2(),
       '/register3': (context) => const RegisterScreen3(),
       '/main_menu': (context) => const MenuScreen(),
+      '/settings': (context) => const SettingsScreen(),
     },
   ));
 }

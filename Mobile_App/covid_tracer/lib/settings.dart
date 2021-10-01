@@ -1,43 +1,40 @@
 import 'package:flutter/material.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
-  _MenuScreen createState() => _MenuScreen();
+  _SettingsScreen createState() => _SettingsScreen();
 }
 
-class _MenuScreen extends State<MenuScreen> {
+class _SettingsScreen extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.lightGreen,
+      ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Padding(
-                  padding:
-                      EdgeInsets.only(left: 15, right: 15, top: 40, bottom: 10),
+            children: const [
+              Padding(
+                  padding: EdgeInsets.all(15),
                   child: Text("Covid Tracer",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 50.0))),
               Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 40, bottom: 10),
-                  child: IconButton(
-                    icon: const Icon(Icons.settings),
-                    iconSize: 50,
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/settings');
-                    },
+                  padding: EdgeInsets.all(15),
+                  child: Icon(
+                    Icons.coronavirus,
+                    size: 50.0,
+                    color: Colors.red,
                   ))
             ],
           ),
           Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(10),
             color: Colors.lightGreen,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +46,7 @@ class _MenuScreen extends State<MenuScreen> {
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 15, bottom: 15),
                       child: Icon(
-                        Icons.qr_code,
+                        Icons.account_box,
                         size: 50,
                         color: Colors.white,
                       ),
@@ -57,7 +54,7 @@ class _MenuScreen extends State<MenuScreen> {
                 const Padding(
                     padding: EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
-                    child: Text("Check-In to a Venue",
+                    child: Text("My Account",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.0))),
                 Padding(
@@ -74,7 +71,7 @@ class _MenuScreen extends State<MenuScreen> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(10),
             color: Colors.lightGreen,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +83,7 @@ class _MenuScreen extends State<MenuScreen> {
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 15, bottom: 15),
                       child: Icon(
-                        Icons.location_on,
+                        Icons.menu,
                         size: 50,
                         color: Colors.white,
                       ),
@@ -94,7 +91,7 @@ class _MenuScreen extends State<MenuScreen> {
                 const Padding(
                     padding: EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
-                    child: Text("Check a location",
+                    child: Text("Services",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.0))),
                 Padding(
@@ -111,7 +108,7 @@ class _MenuScreen extends State<MenuScreen> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(10),
             color: Colors.lightGreen,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +120,7 @@ class _MenuScreen extends State<MenuScreen> {
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 15, bottom: 15),
                       child: Icon(
-                        Icons.map,
+                        Icons.notifications,
                         size: 50,
                         color: Colors.white,
                       ),
@@ -131,7 +128,7 @@ class _MenuScreen extends State<MenuScreen> {
                 const Padding(
                     padding: EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
-                    child: Text("Trace my location",
+                    child: Text("Notifications",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.0))),
                 Padding(
@@ -148,7 +145,7 @@ class _MenuScreen extends State<MenuScreen> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(10),
             color: Colors.lightGreen,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,7 +157,7 @@ class _MenuScreen extends State<MenuScreen> {
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 15, bottom: 15),
                       child: Icon(
-                        Icons.thermostat,
+                        Icons.info,
                         size: 50,
                         color: Colors.white,
                       ),
@@ -168,7 +165,7 @@ class _MenuScreen extends State<MenuScreen> {
                 const Padding(
                     padding: EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
-                    child: Text("My temperatures",
+                    child: Text("About this App",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.0))),
                 Padding(
@@ -185,7 +182,7 @@ class _MenuScreen extends State<MenuScreen> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(10),
             color: Colors.lightGreen,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,7 +194,7 @@ class _MenuScreen extends State<MenuScreen> {
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 15, bottom: 15),
                       child: Icon(
-                        Icons.article,
+                        Icons.logout,
                         size: 50,
                         color: Colors.white,
                       ),
@@ -205,7 +202,7 @@ class _MenuScreen extends State<MenuScreen> {
                 const Padding(
                     padding: EdgeInsets.only(
                         left: 10, right: 10, top: 10, bottom: 10),
-                    child: Text("Health News",
+                    child: Text("Log Out",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.0))),
                 Padding(
