@@ -20,39 +20,33 @@
         <form action="otp" method="POST">
         {% csrf_token %}
 
-        <div class="field">
-            <input type="text" name="otp" required />
-            <label>Enter otp</label>
-        </div>
+        {% ifnotequal digits 'na' %}
 
-        <div class="field">
-            <input type="submit" value="Submit" />
+            <div>
+                Enter the OTP sent to 07x-xxx-xx-{{digits}}
+            </div>
+
+            <div class="field">
+                <input type="text" name="otp" required />
+                <label>Enter otp</label>
+            </div>
+
+            <div class="field">
+                <input type="submit" value="Submit" />
+            </div>          
+
+        {% endifnotequal %}
+
+
+        <div class="isa-error">
+            {% for message in messages %}
+            <i class="bx bx-error"></i>
+            {{message}}
+            {% endfor %}
         </div>
 
         <div class="signup-link"><a href="otp">Resend OTP</a></div>
-
-      <!--
-        {% for message in messages %}
-
-            <div class="isa-{{message.tags}}">          
-                <i class="bx bx-error"></i>
-                {{message}}
-            </div>
-
-        {% endfor %}
-      -->  
-        {% if messages %}
-
-            message = {{messages.first}}
-            <div class="isa-{{message.tags}}">          
-                <i class="bx bx-error"></i>
-                {{message}}
-            </div>
-
-        {% endif %}
-        
-
-        
+    
         </form>
     </div>
 
