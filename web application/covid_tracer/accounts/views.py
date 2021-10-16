@@ -1,4 +1,5 @@
 from django.http import request
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
@@ -13,6 +14,8 @@ import random
 from django.core.cache import cache
 from django.db import connection
 
+import string
+
 
 def login(request):
 
@@ -25,6 +28,8 @@ def login(request):
         
         username = request.POST['username']
         pswrd = request.POST['password']
+        remember = request.POST['remember']
+
         user = auth.authenticate(username=username, password=pswrd)
 
         if user is not None:
@@ -36,16 +41,33 @@ def login(request):
             if not profile.is_verified:
                 return redirect('otp')
             
-            else:               
-                return render(request, 'home.html', {'user': user})
+            else:
+                if remember=='true':
+                    request.session['username'] = username
+                    request.session['password'] = pswrd
+
+                if request.COOKIES.get('token') and request.COOKIES['token']==username:
+                    return render(request, 'home.html', {'user': user})
+                
+                else:
+                    return redirect('otp')
 
         else:
-            messages.error(request, 'Invalid Username/NIC or Password')
+            messages.error(request, 'Invalid Credendials')
             return redirect('login')
 
     else:
-        print(request.META) 
-        return render(request, 'login.html')
+        
+        if request.session.has_key('username') and request.session.has_key('password'):
+
+            username = request.session['username']
+            pswrd = request.session['passsword']
+            user = auth.authenticate(username=username, password=pswrd)
+            auth.login(request, user)
+            return render(request, 'home.html', {'user': user})
+            
+        else:
+            return render(request, 'login.html')
     
     
 
@@ -196,11 +218,14 @@ def otp(request):
     else:
         user = request.user
         status, secs = send_otp(user)
+        digits = 'na'
         if not status:
             messages.error(request, 'Try again in '+str(secs)+'s')
         
-        messages.success(request, 'OTP sent successfully')
-        return render(request, 'otp.html')
+        else:
+            digits = user.contact_number[-2:]
+       
+        return render(request, 'otp.html', {'digits':digits})
 
 
 def throttle(request):
@@ -223,12 +248,30 @@ def throttle(request):
     return False, 0
 
 
+def rememberdevice(request):
+
+    if request.method=='POST':
+
+        randomstring = ''.join(random.choices(string.ascii_letters+string.digits, k=20))
+        response = HttpResponse()
+        response.set_cookie('token', randomstring)
+        return response
+
+
+def forgetdevice(request):
+
+    if request.method=='POST':
+
+        response = HttpResponse()
+        response.delete_cookie('token')
+        return response
+
 
 def home(request) :
     return render(request, 'home.html')
 
-def trace(request):
 
+def trace(request):
     result = calc(request)
     return render(request, 'trace.html',{'TraceLocation':result})
 
@@ -236,6 +279,14 @@ def trace(request):
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+
+def myaccount(request):
+    return render(request, 'myaccount.html')
+
+
+def forgotpassword(request):
+    pass
 
 
 def calc(request):

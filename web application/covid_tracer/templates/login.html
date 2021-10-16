@@ -32,10 +32,10 @@
 
         <div class="content">
             <div class="checkbox">
-                <input type="checkbox" id="remember-me" />
-                <label for="remember-me">Remember me</label>
+                <input type="checkbox" name="remember" />
+                <label for="remember-me">Keep me signed-in</label>
             </div>
-            <div class="pass-link"><a href="#">Forgot password?</a></div>
+            <div class="pass-link"><a href="forgotpassword">Forgot password?</a></div>
         </div>
 
         <div class="field">
@@ -44,7 +44,7 @@
 
         <div class="signup-link">Not a member? <a href="register">Register Now</a></div>
         
-        <div class="isa_error">
+        <div class="isa-error">
             {% for message in messages %}
             <i class="bx bx-error"></i>
             {{message}}
