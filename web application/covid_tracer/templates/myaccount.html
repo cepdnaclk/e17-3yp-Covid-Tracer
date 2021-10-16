@@ -132,7 +132,8 @@
                   <hr>
                   <h6>ACCOUNT SETTINGS</h6>
                   <hr>
-                  <form>
+                  <form action="resetpassword" method="POST">
+                    {% csrf_token %}
                     <div class="form-group">
                       <label class="d-block">Change Password</label>
                       <input type="text" class="form-control" placeholder="Enter your old password">
@@ -140,7 +141,7 @@
                       <input type="text" class="form-control mt-1" placeholder="Confirm new password">
                     </div>
                     <hr>
-                    <button type="button" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     <button type="reset" class="btn btn-light">Reset Changes</button>
                   </form>
   
@@ -168,7 +169,6 @@
                   </form>
                   
                   <hr>
-                  <form>
                     <div class="form-group mb-0">
                       <label class="d-block">Sessions</label>
                       <p class="font-size-sm text-secondary">
@@ -176,16 +176,17 @@
                         We recommend this for personal devices.
                       </p>
                       <ul class="list-group list-group-sm">
-                        <li class="list-group-item has-icon">
-                          <div>
-                            <h6 class="mb-0">San Francisco City 190.24.335.55</h6>
-                            <small class="text-muted">Your current session seen in United States</small>
-                          </div>
-                          <button class="btn btn-light btn-sm ml-auto" type="button">Remember this device</button>
-                        </li>
+                        <form>
+                          <li class="list-group-item has-icon">
+                            <div>
+                              <h6 class="mb-0">San Francisco City 190.24.335.55</h6>
+                              <small class="text-muted">Your current session seen in United States</small>
+                            </div> <!-- btn btn-light btn-sm ml-auto -->
+                            <button class="btn btn-primary" type="button">Remember this device</button>
+                          </li>
+                      </form>
                       </ul>
                     </div>
-                  </form>
                   
                 </div>  
               </div>
@@ -200,6 +201,8 @@
     <!--End of home content-->
 
   </section>
+
+  <script src="{% static 'js/main.js' %}"></script>
 
   <style type="text/css">
     body{

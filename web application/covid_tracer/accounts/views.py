@@ -28,25 +28,27 @@ def login(request):
         
         username = request.POST['username']
         pswrd = request.POST['password']
-        remember = request.POST['remember']
 
         user = auth.authenticate(username=username, password=pswrd)
 
         if user is not None:
-
-            auth.login(request, user)
             
+            auth.login(request, user)
+
             #check if phone is verified
             profile = Profile.objects.get(user=user)
             if not profile.is_verified:
                 return redirect('otp')
             
             else:
-                if remember=='true':
-                    request.session['username'] = username
-                    request.session['password'] = pswrd
+                if request.POST.get('remember-me'):
+                    # sesssion valid for 2 weeks
+                    request.session.set_expiry(1209600)
 
-                if request.COOKIES.get('token') and request.COOKIES['token']==username:
+                if request.COOKIES.get('token'):
+                    token = request.COOKIES['token']
+                    # check
+                    request.session['username'] = username
                     return render(request, 'home.html', {'user': user})
                 
                 else:
@@ -58,13 +60,10 @@ def login(request):
 
     else:
         
-        if request.session.has_key('username') and request.session.has_key('password'):
-
-            username = request.session['username']
-            pswrd = request.session['passsword']
-            user = auth.authenticate(username=username, password=pswrd)
-            auth.login(request, user)
-            return render(request, 'home.html', {'user': user})
+        if 'username' in request.session:
+            if request.user.is_authenticated and request.session['username']==request.user.username:
+                req_user = request.user
+                return render(request, 'home.html', {'user': req_user})
             
         else:
             return render(request, 'login.html')
@@ -116,8 +115,6 @@ def register(request):
                 for lst in word.split(" "):
                     print(lst)
                     if lst.startswith("19",0,2) or lst.startswith("20",0,2): 
-                        print(lst)
-                        print(nic)
                         if (lst==nic):  
                             request.session['nic'] = nic
                             return redirect('confirm')
@@ -196,27 +193,30 @@ def send_otp(user):
 
 def otp(request):
     
+    user = request.user
+
     if request.method == 'POST':
 
         status, secs = throttle(request)
         if status:
             messages.error(request, 'Maximum Rate Exceeded. Wait for '+str(secs)+'s')
-            return redirect('otp')
+            return redirect('otp', user)
         
-        user = request.user
+
         profile = Profile.objects.get(user=user)
         otp = request.POST['otp']
         if otp == profile.otp:
             profile.is_verified = True
             profile.save()
+            request.session['username'] = user.username
             return render(request, 'home.html', {'user': user})
 
         else:
             messages.error(request, "Invalid OTP")
-            return redirect('otp')
+            return redirect('otp', user)
 
     else:
-        user = request.user
+
         status, secs = send_otp(user)
         digits = 'na'
         if not status:
@@ -248,17 +248,29 @@ def throttle(request):
     return False, 0
 
 
+def resetpassword(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+
 def rememberdevice(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
 
     if request.method=='POST':
 
         randomstring = ''.join(random.choices(string.ascii_letters+string.digits, k=20))
         response = HttpResponse()
-        response.set_cookie('token', randomstring)
+        response.set_signed_cookie('token', randomstring)
         return response
 
 
 def forgetdevice(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
 
     if request.method=='POST':
 
@@ -267,31 +279,54 @@ def forgetdevice(request):
         return response
 
 
-def home(request) :
+def home(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     return render(request, 'home.html')
 
 
 def trace(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     result = calc(request)
     return render(request, 'trace.html',{'TraceLocation':result})
 
 
 def logout(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     auth.logout(request)
     return redirect('login')
 
 
 def myaccount(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    print(request.META['HTTP_USER_AGENT'])
+    print(request.META['REMOTE_ADDR'])
     return render(request, 'myaccount.html')
 
 
 def forgotpassword(request):
-    pass
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
 
 
 def calc(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     user=request.user
-    print(user.nic.nic)
     cursor = connection.cursor()
     cursor.execute("call PERCENTAGE_CALC(%(nic)s)",{ 'nic': user.nic.nic })
     result = cursor.fetchall()
