@@ -65,3 +65,13 @@ class Profile(models.Model):
 class TraceLocation(models.Model):
     location = models.CharField(max_length=100)
     percentage = models.FloatField(max_length=5)
+
+
+
+class DeviceSessions(models.Model):
+
+    user = models.ForeignKey(RegisteredUser, on_delete=models.CASCADE)
+    agent = models.CharField(max_length=60)
+    ip = models.CharField(max_length=20)
+    token = models.CharField(max_length=20, null=True, blank=True)
+    last_login = models.DateTimeField()
