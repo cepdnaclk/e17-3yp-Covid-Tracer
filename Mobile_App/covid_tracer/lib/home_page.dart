@@ -96,7 +96,8 @@ class _HomeScreen extends State<HomeScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/second');
+                      //navigate to the login page
+                      Navigator.pushNamed(context, '/login');
                     },
                   )),
               Center(
@@ -112,7 +113,8 @@ class _HomeScreen extends State<HomeScreen> {
                               color: Colors.lightGreen.shade900, fontSize: 20),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              //Navigator.pushNamed(context, '/second');
+                              //navigate to registration page 1
+                              Navigator.pushNamed(context, '/register1');
                             })
                     ])),
               )

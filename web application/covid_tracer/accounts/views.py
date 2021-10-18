@@ -1,4 +1,5 @@
 from django.http import request
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
@@ -13,6 +14,8 @@ import random
 from django.core.cache import cache
 from django.db import connection
 
+import string
+
 
 def login(request):
 
@@ -25,27 +28,45 @@ def login(request):
         
         username = request.POST['username']
         pswrd = request.POST['password']
+
         user = auth.authenticate(username=username, password=pswrd)
 
         if user is not None:
-
-            auth.login(request, user)
             
+            auth.login(request, user)
+
             #check if phone is verified
             profile = Profile.objects.get(user=user)
             if not profile.is_verified:
                 return redirect('otp')
             
-            else:               
-                return render(request, 'home.html', {'user': user})
+            else:
+                if request.POST.get('remember-me'):
+                    # sesssion valid for 2 weeks
+                    request.session.set_expiry(1209600)
+
+                if request.COOKIES.get('token'):
+                    token = request.COOKIES['token']
+                    # check
+                    request.session['username'] = username
+                    return render(request, 'home.html', {'user': user})
+                
+                else:
+                    return redirect('otp')
 
         else:
-            messages.error(request, 'Invalid Username/NIC or Password')
+            messages.error(request, 'Invalid Credendials')
             return redirect('login')
 
     else:
-        print(request.META) 
-        return render(request, 'login.html')
+        
+        if 'username' in request.session:
+            if request.user.is_authenticated and request.session['username']==request.user.username:
+                req_user = request.user
+                return render(request, 'home.html', {'user': req_user})
+            
+        else:
+            return render(request, 'login.html')
     
     
 
@@ -73,8 +94,8 @@ def register(request):
                 return redirect('register')
             except:
                 pass
-                
-
+            
+            
             img_nic = request.FILES['nicimg']
             filestr = img_nic.read()
             npimg = np.fromstring(filestr, np.uint8)
@@ -91,11 +112,8 @@ def register(request):
             pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
             result = pytesseract.image_to_string((threshed),lang="eng")
             for word in result.split("\n"):
-                for lst in word.split(" "):
-                    print(lst)
+                for lst in word.split(" "):    
                     if lst.startswith("19",0,2) or lst.startswith("20",0,2): 
-                        print(lst)
-                        print(nic)
                         if (lst==nic):  
                             request.session['nic'] = nic
                             return redirect('confirm')
@@ -174,33 +192,39 @@ def send_otp(user):
 
 def otp(request):
     
+    user = request.user
+
     if request.method == 'POST':
 
         status, secs = throttle(request)
         if status:
             messages.error(request, 'Maximum Rate Exceeded. Wait for '+str(secs)+'s')
-            return redirect('otp')
+            return redirect('otp', user)
         
-        user = request.user
+
         profile = Profile.objects.get(user=user)
         otp = request.POST['otp']
         if otp == profile.otp:
             profile.is_verified = True
             profile.save()
+            request.session['username'] = user.username
             return render(request, 'home.html', {'user': user})
 
         else:
             messages.error(request, "Invalid OTP")
-            return redirect('otp')
+            return redirect('otp', user)
 
     else:
-        user = request.user
+
         status, secs = send_otp(user)
+        digits = 'na'
         if not status:
             messages.error(request, 'Try again in '+str(secs)+'s')
         
-        messages.success(request, 'OTP sent successfully')
-        return render(request, 'otp.html')
+        else:
+            digits = user.contact_number[-2:]
+       
+        return render(request, 'otp.html', {'digits':digits})
 
 
 def throttle(request):
@@ -223,24 +247,85 @@ def throttle(request):
     return False, 0
 
 
+def resetpassword(request):
 
-def home(request) :
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+
+def rememberdevice(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    if request.method=='POST':
+
+        randomstring = ''.join(random.choices(string.ascii_letters+string.digits, k=20))
+        response = HttpResponse()
+        response.set_signed_cookie('token', randomstring)
+        return response
+
+
+def forgetdevice(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    if request.method=='POST':
+
+        response = HttpResponse()
+        response.delete_cookie('token')
+        return response
+
+
+def home(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     return render(request, 'home.html')
 
+
 def trace(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
 
     result = calc(request)
     return render(request, 'trace.html',{'TraceLocation':result})
 
 
 def logout(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     auth.logout(request)
     return redirect('login')
 
 
+def myaccount(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    print(request.META['HTTP_USER_AGENT'])
+    print(request.META['REMOTE_ADDR'])
+    return render(request, 'myaccount.html')
+
+
+def forgotpassword(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+
+
 def calc(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     user=request.user
-    print(user.nic.nic)
     cursor = connection.cursor()
     cursor.execute("call PERCENTAGE_CALC(%(nic)s)",{ 'nic': user.nic.nic })
     result = cursor.fetchall()
