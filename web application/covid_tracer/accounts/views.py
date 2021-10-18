@@ -94,8 +94,8 @@ def register(request):
                 return redirect('register')
             except:
                 pass
-                
-
+            
+            
             img_nic = request.FILES['nicimg']
             filestr = img_nic.read()
             npimg = np.fromstring(filestr, np.uint8)
@@ -112,8 +112,7 @@ def register(request):
             pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
             result = pytesseract.image_to_string((threshed),lang="eng")
             for word in result.split("\n"):
-                for lst in word.split(" "):
-                    print(lst)
+                for lst in word.split(" "):    
                     if lst.startswith("19",0,2) or lst.startswith("20",0,2): 
                         if (lst==nic):  
                             request.session['nic'] = nic

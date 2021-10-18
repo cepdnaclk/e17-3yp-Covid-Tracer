@@ -67,7 +67,7 @@ class TraceLocation(models.Model):
     percentage = models.FloatField(max_length=5)
 
 
-
+"""
 class DeviceSessions(models.Model):
 
     user = models.ForeignKey(RegisteredUser, on_delete=models.CASCADE)
@@ -75,3 +75,4 @@ class DeviceSessions(models.Model):
     ip = models.CharField(max_length=20)
     token = models.CharField(max_length=20, null=True, blank=True)
     last_login = models.DateTimeField()
+"""
