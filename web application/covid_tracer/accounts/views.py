@@ -5,6 +5,7 @@ from django.contrib import messages
 from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
 from django.contrib.auth.models import auth
 
+
 import cv2
 import pytesseract
 import numpy as np
@@ -13,9 +14,8 @@ from django.core.files.storage import FileSystemStorage
 import random
 from django.core.cache import cache
 from django.db import connection
-
+import json
 import string
-
 
 def login(request):
 
@@ -283,7 +283,22 @@ def home(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    return render(request, 'home.html')
+    result = calc(request)
+    traceDet = []
+    for i in result:
+        thisdict = {
+        "shop": i[0],
+        "location": i[1],
+        "percent": float(i[2]),
+        "temp": float(i[3]),
+        "date": str(i[4]),
+        "time": str(i[5])
+        }
+        traceDet.append(thisdict)
+    json_string = json.dumps(traceDet)    
+    print(traceDet)
+    return render(request, 'home.html',{'TraceLocation': json_string})
+
 
 
 def trace(request):
@@ -329,4 +344,15 @@ def calc(request):
     cursor = connection.cursor()
     cursor.execute("call PERCENTAGE_CALC(%(nic)s)",{ 'nic': user.nic.nic })
     result = cursor.fetchall()
+    #result = dict_fetchall(cursor)
     return (result)
+
+
+def dict_fetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
+
