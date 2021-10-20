@@ -86,14 +86,14 @@ input[type="radio"] {
         </li>
 
         <li>
-            <a href="search">
+            <a href="#" class="active">
             <i class='bx bx-map' ></i>
             <span class="links_name">Check a location</span>
             </a>
         </li>
 
         <li>
-            <a href="#"  class="active">
+            <a href="trace">
             <i class='bx bx-map-pin' ></i>
             <span class="links_name">Trace my locations</span>
             </a>
@@ -144,7 +144,7 @@ input[type="radio"] {
         <nav>
         <div class="sidebar-button">
             <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Location Traces</span>
+            <span class="dashboard">Search Places </span>
         </div>
 
         <div class="profile-details">
@@ -167,33 +167,6 @@ input[type="radio"] {
                     </div>
                     <br>
                     <div class="sales-details">
-                        <!--<ul class="details">
-                            <li class="topic">Timstamp</li>
-                            <li><a href="#">Aug. 22, 2021, 7.01 p.m.</a></li>
-                            <li><a href="#">Aug. 22, 2021, 9.32 p.m.</a></li>
-                            <li><a href="#">Aug. 23, 2021, 12.56 p.m.</a></li>
-                        </ul>
-
-                        <ul class="details">
-                            <li class="topic">Location</li>
-                            <li><a href="#">Gemma Shopping Mall Kadawatha</a></li>
-                            <li><a href="#">Sampath Bank ATM Mahara</a></li>
-                            <li><a href="#">Texicon Restaurant Kiribathgoda</a></li>
-                        </ul>
-
-                        <ul class="details">
-                            <li class="topic">Infect Percentage %</li>
-                            <li><a href="#">32</a></li>
-                            <li><a href="#">23</a></li>
-                            <li><a href="#">12</a></li>
-                        </ul>
-
-                        <ul class="details">
-                            <li class="topic">Temperature</li>
-                            <li><a href="#">36.9</a></li>
-                            <li><a href="#">37.2</a></li>
-                            <li><a href="#">37.0</a></li>
-                        </ul>   -->
                         <table id= "tracetable" >
                         <tr>
                             <th>Date</th>
@@ -237,68 +210,9 @@ input[type="radio"] {
 
     <script src="{% static 'js/main.js' %}"></script>
 
-    <script>
-        function initMap(){
-
-            var option = {
-                zoom:10,
-                center: { lat:  6.927079, lng: 79.861244 }
-            }
-
-            var map = new
-            google.maps.Map(document.getElementById('map'), option);
 
 
-            for(var i = 1;i<document.getElementById("tracetable").rows.length ;i++){
-                   
-                ( async () => {
-                    var x = document.getElementById("tracetable").rows[i].cells; 
-                    const data = await findcod(x[3].innerHTML);
-                    var myLatlng = new google.maps.LatLng(data[0],data[1]);
-                    addMarker(myLatlng,x[2].innerHTML,Math.trunc(x[4].innerHTML) + "%");
-                })(); 
-
-            }
-            function addMarker(details,place,perc){
-
-                var marker = new google.maps.Marker({
-                position: details,
-                map: map,
-                label: {
-                    text: perc,
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "20px"
-                    }
-          
-                });
-                
-                var infowindow = new google.maps.InfoWindow({
-                content: place
-                });
-
-                marker.addListener('mouseover',function(){
-                    infowindow.open(map,marker);
-                });
-
-            }
- 
-            async function findcod(address){
-                var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address
-                const response = await fetch(url);
-                var data = await response.json();
-                var lat = data[0].lat;
-                var lon = data[0].lon;
-                return [lat,lon];
-            }
-
-        }
-  
-    </script>
-
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-3hs6rtVoYEnO8Dfnp9-RhbJ-xdW9hT8&callback=initMap">
-    </script>
+   
     <script>
         function myFunction() {
             var input, filter, table, tr, td, i, txtValue, selected=false;
@@ -332,6 +246,7 @@ input[type="radio"] {
             }
         }
 
+        
     
         function sortTable() {
         var table, rows, switching, i, x, y, shouldSwitch;
