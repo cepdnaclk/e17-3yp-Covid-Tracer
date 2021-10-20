@@ -283,7 +283,7 @@ def home(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    result = calc(request)
+    result = calc(request,"call PERCENTAGE_CALC(%(nic)s)")
     traceDet = []
     for i in result:
         thisdict = {
@@ -306,7 +306,7 @@ def trace(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    result = calc(request)
+    result = calc(request,"call PERCENTAGE_CALC(%(nic)s)")
     return render(request, 'trace.html',{'TraceLocation':result})
 
 
@@ -335,7 +335,32 @@ def forgotpassword(request):
     
 
 
-def calc(request):
+def search(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    result = calc(request,"call PERCENTAGE_CALC(%(nic)s)")
+    return render(request, 'search.html',{'TraceLocation':result})
+
+
+
+
+def calc(request,query):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    user=request.user
+    cursor = connection.cursor()
+    cursor.execute(query,{ 'nic': user.nic.nic })
+    result = cursor.fetchall()
+    return (result)
+
+
+
+
+'''def calc(request):
 
     if not request.user.is_authenticated:
         return redirect('login')
@@ -346,13 +371,5 @@ def calc(request):
     result = cursor.fetchall()
     #result = dict_fetchall(cursor)
     return (result)
-
-
-def dict_fetchall(cursor):
-    "Return all rows from a cursor as a dict"
-    columns = [col[0] for col in cursor.description]
-    return [
-        dict(zip(columns, row))
-        for row in cursor.fetchall()
-    ]
+'''
 
