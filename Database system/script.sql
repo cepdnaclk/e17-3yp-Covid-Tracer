@@ -124,7 +124,7 @@ INSERT INTO INFECT VALUES
     (CURDATE(),"beeta",'2021-09-18',"123456789123");
 
 
-DELIMITER $$
+/*DELIMITER $$
 CREATE PROCEDURE PERCENTAGE_CALC (IN nic_no CHAR(12))
 BEGIN
 SELECT location, percentage FROM(
@@ -150,27 +150,107 @@ JOIN
 END$$
 DELIMITER ;
 
+*/
 
 
-
+/* Trace Locations visited */
 DELIMITER $$
-CREATE PROCEDURE PERCENTAGE_CALC(IN  , IN customer CHAR(10), IN bookdate DATE, IN returndate DATE)
+CREATE PROCEDURE PERCENTAGE_CALC (IN nic_no CHAR(12))
 BEGIN
+SELECT name,location, percentage,T1.temperature,T1.date,T1.arrival_time FROM(
+SELECT A.temperature,A.date,A.arrival_time,A.serial_no,infect_count,total, (infect_count / total)*100 AS percentage
+FROM(
+    SELECT s.temperature,s.date,s.arrival_time,TRACE.serial_no,COUNT(DISTINCT nic) AS total FROM TRACE JOIN (SELECT* FROM (SELECT serial_no, date,arrival_time,temperature FROM TRACE WHERE nic = nic_no ORDER BY date ASC, arrival_time ASC) AS sub GROUP BY serial_no) s
+    ON TRACE.serial_no=s.serial_no WHERE s.date<TRACE.date OR (s.date=TRACE.date AND s.arrival_time<=TRACE.arrival_time) GROUP BY TRACE.serial_no ) AS A
+JOIN 
+(SELECT TRACE.serial_no,COUNT(DISTINCT nic) AS infect_count FROM TRACE JOIN (SELECT* FROM (SELECT serial_no, date,arrival_time FROM TRACE WHERE nic = nic_no ORDER BY date ASC, arrival_time ASC) AS sub GROUP BY serial_no) s
+    ON TRACE.serial_no=s.serial_no WHERE (s.date<TRACE.date OR (s.date=TRACE.date AND s.arrival_time<=TRACE.arrival_time)) AND nic IN
 
-    DECLARE pack CHAR(7);
-    SET pack =  (SELECT pack_id FROM PACKAGE 
-                WHERE PACKAGE.vehicle_category = (SELECT category FROM VEHICLE WHERE id = vehicle)
-                AND pack_name LIKE 
-                CASE WHEN DATEDIFF(returndate, bookdate) < 5 THEN '%Daily'
-                      WHEN DATEDIFF(returndate, bookdate) >=5 AND  DATEDIFF(returndate, bookdate) < 21 THEN '%Weekly'
-                      ELSE '%Monthly' END );
-    
+(SELECT nic FROM (
+    SELECT nic FROM INFECT
+    UNION 
+    SELECT nic FROM UNDER_QUARANTINE
+) a WHERE nic IN (SELECT DISTINCT nic FROM TRACE JOIN (SELECT* FROM (SELECT serial_no, date,arrival_time FROM TRACE WHERE nic = nic_no ORDER BY date ASC, arrival_time ASC) AS sub GROUP BY serial_no) s
+    ON TRACE.serial_no=s.serial_no WHERE s.date<TRACE.date OR (s.date=TRACE.date AND s.arrival_time<=TRACE.arrival_time)
+)) GROUP BY TRACE.serial_no) AS B ON A.serial_no = B.serial_no) AS T1
 
-    INSERT INTO BOOKING(booking_done_date, packID, vehicleID, customerNIC, booked_date, return_date, completed)
-    VALUES (CURDATE(), pack, vehicle, customer, bookdate, returndate, 'N');
+JOIN
+(SELECT serial_no, name, location FROM MERCHANT) AS T2 ON T2.serial_no = T1.serial_no;
 
 END$$
 DELIMITER ;
+
+
+drop procedure percentage_calc;
+
+
+
+
+
+/* Top 10 Places of the user's area */
+
+select SUBSTRING_INDEX(address, ',', -1) as UserLocation from LocalCommunity where nic = "123456789123"
+select serial_no,SUBSTRING_INDEX(location, ',', -1) as MerchantLocation from MERCHANT 
+select serial_no from MERCHANT where 
+
+/* Select places located in the users area  */
+SELECT serial_no 
+FROM ( select SUBSTRING_INDEX(address, ',', -1) as UserLocation from LocalCommunity where nic = "123456789123") AS A
+JOIN (select serial_no,SUBSTRING_INDEX(location, ',', -1) as MerchantLocation from MERCHANT) AS B
+ON A.UserLocation=B.MerchantLocation
+
+/* Select places located in the users area  */
+SELECT serial_no, nic FROM TRACE GROUP BY serial_no, nic HAVING COUNT(*) >= 1
+
+/* Select visted nic of places located in user's area  */
+SELECT UniquePairs.serial_no, nic FROM(
+    SELECT serial_no 
+    FROM ( select SUBSTRING_INDEX(address, ',', -1) as UserLocation from LocalCommunity where nic = "123456789123") AS A
+    JOIN (select serial_no,SUBSTRING_INDEX(location, ',', -1) as MerchantLocation from MERCHANT) AS B
+    ON A.UserLocation=B.MerchantLocation 
+) AS UserAreaPlaces
+JOIN (SELECT serial_no, nic FROM TRACE GROUP BY serial_no, nic HAVING COUNT(*) >= 1) AS UniquePairs
+ON UserAreaPlaces.serial_no = UniquePairs.serial_no ;
+
+/* Select toal count of nic for each place in user's area*/
+
+SELECT UniquePairs.serial_no, COUNT(nic) FROM(
+    SELECT serial_no 
+    FROM ( select SUBSTRING_INDEX(address, ',', -1) as UserLocation from LocalCommunity where nic = "623456789656") AS A
+    JOIN (select serial_no,SUBSTRING_INDEX(location, ',', -1) as MerchantLocation from MERCHANT) AS B
+    ON A.UserLocation=B.MerchantLocation 
+) AS UserAreaPlaces
+JOIN (SELECT serial_no, nic FROM TRACE GROUP BY serial_no, nic HAVING COUNT(*) >= 1) AS UniquePairs
+ON UserAreaPlaces.serial_no = UniquePairs.serial_no GROUP BY UniquePairs.serial_no;
+
+/* infects and underquarantine union */
+SELECT nic FROM (
+    SELECT nic FROM INFECT
+    UNION 
+    SELECT nic FROM UNDER_QUARANTINE
+) a WHERE nic IN (SELECT nic FROM LocalCommunity);
+
+/* get infect count for each of the places near the user */
+SELECT UniquePairs.serial_no, nic FROM(
+    SELECT UniquePairs.serial_no, nic FROM(
+    SELECT serial_no 
+    FROM ( select SUBSTRING_INDEX(address, ',', -1) as UserLocation from LocalCommunity where nic = "623456789656") AS A
+    JOIN (select serial_no,SUBSTRING_INDEX(location, ',', -1) as MerchantLocation from MERCHANT) AS B
+    ON A.UserLocation=B.MerchantLocation 
+    ) AS UserAreaPlaces
+    JOIN (SELECT serial_no, nic FROM TRACE GROUP BY serial_no, nic HAVING COUNT(*) >= 1) AS UniquePairs
+    ON UserAreaPlaces.serial_no = UniquePairs.serial_no 
+) AS VisitedNics
+JOIN(SELECT nic FROM (
+    SELECT nic FROM INFECT
+    UNION 
+    SELECT nic FROM UNDER_QUARANTINE
+) a WHERE nic IN (SELECT nic FROM LocalCommunity)
+) As Infects ON VisitedNics.nic = Infects.nic;
+
+
+
+
 
 
 
