@@ -32,7 +32,43 @@ th {
   background-color: #4f8964;
   color: white;
 }
+
+input[type="radio"] {
+  margin-left: 10px;
+  font-size: 15px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+
+}
+#myInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 50%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+
+
+}
+
+#button {
+  background-color: #4f8964;
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
 </style>
+
+
 <body>
 
     <div class="sidebar">
@@ -65,13 +101,6 @@ th {
 
         <li>
             <a href="#">
-            <i class='bx bx-map-alt' ></i>
-            <span class="links_name">Map View</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="#">
             <i class='bx bx-bell' ></i>
             <span class="links_name">Notifications</span>
             </a>
@@ -85,14 +114,7 @@ th {
         </li>
 
         <li>
-            <a href="#">
-            <i class='bx bx-info-circle' ></i>
-            <span class="links_name">About Covid Tracer</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="#">
+            <a href="myaccount">
             <i class='bx bx-user' ></i>
             <span class="links_name">My Account</span>
             </a>
@@ -100,8 +122,8 @@ th {
 
         <li>
             <a href="#">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Settings</span>
+            <i class='bx bx-info-circle' ></i>
+            <span class="links_name">About Covid Tracer</span>
             </a>
         </li>
 
@@ -122,7 +144,7 @@ th {
         <nav>
         <div class="sidebar-button">
             <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Dashboard</span>
+            <span class="dashboard">Location Traces</span>
         </div>
 
         <div class="profile-details">
@@ -136,6 +158,13 @@ th {
                 <div class="recent-sales box">
 
                     <div class="title">Traces</div>
+                    <br>
+                    <div>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for visited place by.." title="Type in a name">                        
+                    <br>
+                    <input type="radio" id="name" checked="checked" name="choice" value="2">Name 
+                    <input type="radio" id="location" name="choice" value="3">Location
+                    </div>
                     <br>
                     <div class="sales-details">
                         <!--<ul class="details">
@@ -165,7 +194,7 @@ th {
                             <li><a href="#">37.2</a></li>
                             <li><a href="#">37.0</a></li>
                         </ul>   -->
-                        <table id= "tracetable" class="sales-boxes" >
+                        <table id= "tracetable" >
                         <tr>
                             <th>Date</th>
                             <th>Time</th>
@@ -190,6 +219,7 @@ th {
 
 
                     </div>
+                    <button onclick="sortTable()" id = "button">Sort by Percentage</button>
                     
                 </div>
             </div>
@@ -268,6 +298,70 @@ th {
 
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-3hs6rtVoYEnO8Dfnp9-RhbJ-xdW9hT8&callback=initMap">
+    </script>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue, selected=false;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tracetable");
+            tr = table.getElementsByTagName("tr");
+            const rbs = document.querySelectorAll('input[name="choice"]');
+            let selectedValue ;
+
+            for (const rb of rbs) {
+                if (rb.checked) {
+                    selectedValue = rb.value;
+                    selected = true;
+                    break;
+                }
+                
+            }
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[selectedValue];
+                if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+                }
+                   
+            }
+        }
+
+    
+        function sortTable() {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("tracetable");
+        switching = true;
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+
+            switching = false;
+            rows = table.rows;
+
+            for (i = 1; i < (rows.length - 1); i++) {
+    
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[4];
+            y = rows[i + 1].getElementsByTagName("TD")[4];
+
+            if (y.innerHTML > x.innerHTML) {
+                shouldSwitch = true;
+                break;
+            }
+            }
+            if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            }
+        }
+        }
+
     </script>
 </body>
 
