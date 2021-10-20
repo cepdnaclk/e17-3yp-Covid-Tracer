@@ -122,29 +122,29 @@
 
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Gemma Shopping Mall Kadawatha</div>
-            <div class="number">32%</div>
+            <div id="one place" class="box-topic">not visited</div>
+            <div id="one percent" class="number">0%</div>
           </div>
         </div>
 
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Sampath Bank ATM Mahara</div>
-            <div class="number">23%</div>  
+            <div id="two place" class="box-topic">not visited</div>
+            <div id="two percent" class="number">0%</div>  
           </div>  
         </div>
 
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Texicon Restaurant Kiribathgoda</div>
-            <div class="number">12%</div>
+            <div id="three place" class="box-topic">not visited</div>
+            <div id="three percent" class="number">0%</div>
           </div>
         </div>
 
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Average Infect Percentage</div>
-            <div class="number">26%</div>
+            <div id="four place" class="box-topic">not visited</div>
+            <div id="four percent" class="number">0%</div>
           </div>
         </div>
 
@@ -169,12 +169,44 @@
 
   <!--js scripts-->
   <script>
+
+    var data=[], labels=[],i;
+    var TraceLocation= JSON.parse('{{ TraceLocation | escapejs }}');
+    TraceLocation.sort(function(a,b) {
+      return b.percent - a.percent
+    });
+
+    console.log(TraceLocation);
+    for(i=0;i<TraceLocation.length;i++){
+      data.push(TraceLocation[i]["temp"]);
+      labels.push(TraceLocation[i]["date"]);
+
+    }
+    if(TraceLocation.length>0){
+      document.getElementById("one place").innerHTML = TraceLocation[0]["shop"]   ;
+      document.getElementById("one percent").innerHTML = Math.trunc(TraceLocation[0]["percent"]) + '%'  ;
+    }
+    if(TraceLocation.length>1){
+      document.getElementById("two place").innerHTML = TraceLocation[1]["shop"]   ;
+      document.getElementById("two percent").innerHTML = Math.trunc(TraceLocation[1]["percent"]) + '%'  ;
+    }
+    if(TraceLocation.length>2){
+      document.getElementById("three place").innerHTML = TraceLocation[2]["shop"]   ;
+      document.getElementById("three percent").innerHTML = Math.trunc(TraceLocation[2]["percent"]) + '%'  ;
+    }
+    if(TraceLocation.length>3){
+      document.getElementById("four place").innerHTML = TraceLocation[3]["shop"]   ;
+      document.getElementById("four percent").innerHTML = Math.trunc(TraceLocation[3]["percent"]) + '%'  ;
+    }
+
     new Chart(document.getElementById("Chart1"), {
         type: 'line',
         data: {
-          labels: ['Aug. 22, 2021, 7.01 p.m.', 'Aug. 22, 2021, 9.32 p.m.', 'Aug. 23, 2021, 12.56 p.m.'],
+          //labels: ['Aug. 22, 2021, 7.01 p.m.', 'Aug. 22, 2021, 9.32 p.m.', 'Aug. 23, 2021, 12.56 p.m.'],
+          labels: labels,
           datasets: [{ 
-              data: [36.9, 37.2, 37.0],
+              //data: [36.9, 37.2, 37.0],
+              data: data,
               label: "Temperature Measurements",
               borderColor: "#3e95cd",
               fill: false
