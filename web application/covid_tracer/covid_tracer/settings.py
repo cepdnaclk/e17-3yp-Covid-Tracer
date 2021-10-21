@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # setting session cookie age to one hour
 SESSION_COOKIE_AGE = 3600
-SESSION_SAVE_EVERY_REQUEST = True
+#SESSION_SAVE_EVERY_REQUEST = True
 
 
 # Application definition
