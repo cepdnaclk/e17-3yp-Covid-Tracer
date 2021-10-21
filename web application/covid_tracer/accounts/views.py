@@ -56,7 +56,7 @@ def login(request):
                     return redirect('otp')
 
         else:
-            messages.error(request, 'Invalid Credendials')
+            messages.error(request, 'Invalid Credentials')
             return redirect('login')
 
     else:

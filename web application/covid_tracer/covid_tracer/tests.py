@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-
+"""
 class Authentication_Test(LiveServerTestCase):
     
     def test_authentication(self):
@@ -108,7 +108,7 @@ class Authentication_Test(LiveServerTestCase):
         assert ('Try again in') in driver.page_source
 
         driver.quit()
-
+"""
 
 
 class Throttling_Test(LiveServerTestCase):
@@ -178,7 +178,7 @@ class Throttling_Test(LiveServerTestCase):
         driver.quit()
 
 
-
+"""
 class Session_Authorization_Test(LiveServerTestCase):
 
     def test_session_allow(self):
@@ -208,3 +208,4 @@ class Session_Authorization_Test(LiveServerTestCase):
         driver.get('http://127.0.0.1:8000/accounts/login')
 
         assert ('Login') in driver.page_source
+"""
