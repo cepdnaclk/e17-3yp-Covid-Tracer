@@ -3,70 +3,73 @@
 <!DOCTYPE html>
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Covid Tracer</title>
     <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        table {
+          border-collapse: collapse;
+          table-layout: auto;
+          width : 100%;
+          display:table;
+          margin-right:auto;
+          margin-left:auto;
+        }
+        
+        th, td {
+          text-align: center;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even){background-color: #f2f2f2}
+        
+        th {
+          background-color: #4f8964;
+          color: white;
+        }
+        
+        input[type="radio"] {
+          margin-left: 10px;
+          font-size: 15px; /* Increase font-size */
+          padding: 12px 20px 12px 40px; /* Add some padding */
+          border: 1px solid #ddd; /* Add a grey border */
+          margin-bottom: 12px; /* Add some space below the input */
+        
+        }
+        #myInput {
+          background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+          background-position: 10px 12px; /* Position the search icon */
+          background-repeat: no-repeat; /* Do not repeat the icon image */
+          width: 50%; /* Full-width */
+          font-size: 16px; /* Increase font-size */
+          padding: 12px 20px 12px 40px; /* Add some padding */
+          border: 1px solid #ddd; /* Add a grey border */
+          margin-bottom: 12px; /* Add some space below the input */
+        
+        
+        }
+        
+        #button {
+          background-color: #4f8964;
+          border: none;
+          color: white;
+          padding: 5px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        
+        </style>
+
 </head>
-<style>
-table {
-  border-collapse: collapse;
-  table-layout: auto;
-  width : 100%;
-  display:table;
-  margin-right:auto;
-  margin-left:auto;
-}
-
-th, td {
-  text-align: center;
-  padding: 8px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2}
-
-th {
-  background-color: #4f8964;
-  color: white;
-}
-
-input[type="radio"] {
-  margin-left: 10px;
-  font-size: 15px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-
-}
-#myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 50%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-
-
-}
-
-#button {
-  background-color: #4f8964;
-  border: none;
-  color: white;
-  padding: 5px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-
-</style>
 
 
 <body>
@@ -128,7 +131,7 @@ input[type="radio"] {
         </li>
 
         <li class="log_out">
-            <a href="../website/bla">
+            <a href="logout">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
             </a>
