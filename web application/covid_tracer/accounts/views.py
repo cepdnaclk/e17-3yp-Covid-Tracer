@@ -2,7 +2,7 @@ from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
+from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation, DeviceSessions
 from django.contrib.auth.models import auth
 
 
@@ -254,12 +254,17 @@ def resetpassword(request):
         return redirect('login')
 
 
+
 def rememberdevice(request):
 
     if not request.user.is_authenticated:
         return redirect('login')
 
     if request.method=='POST':
+
+        agent = request.POST['agent']
+        ip = request.POST['ip']
+        print(ip)
 
         randomstring = ''.join(random.choices(string.ascii_letters+string.digits, k=20))
         response = HttpResponse()
@@ -277,6 +282,7 @@ def forgetdevice(request):
         response = HttpResponse()
         response.delete_cookie('token')
         return response
+
 
 
 def home(request):
@@ -325,7 +331,14 @@ def myaccount(request):
     if not request.user.is_authenticated:
         return redirect('login')
     
-    return render(request, 'myaccount.html')
+    devs = DeviceSessions.objects.filter(user=request.user)
+    for dev in devs:
+        if dev.token is None:
+            dev.token = '0'
+        else:
+            dev.token = '1'
+
+    return render(request, 'myaccount.html', {'devices': devs})
 
 
 def forgotpassword(request):

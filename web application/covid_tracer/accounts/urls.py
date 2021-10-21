@@ -14,6 +14,6 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('search', views.search, name='search'),
     path('load', views.load_more, name='load'),
-
-
+    path('rememberdevice', views.rememberdevice, name='rememberdevice'),
+    path('forgetdevice', views.forgetdevice, name='forgetdevice'),
 ]
