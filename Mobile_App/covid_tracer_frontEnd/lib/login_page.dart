@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -23,22 +24,24 @@ class _LoginScreen extends State<LoginScreen> {
                   child: Text("LOGIN",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 50.0))),
-              const Padding(
-                padding:
-                    EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 15),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, top: 10, bottom: 15),
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: nameController,
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Username/NIC",
                       hintText: "Enter Username or NIC"),
                 ),
               ),
-              const Padding(
-                padding:
-                    EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 25),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, top: 15, bottom: 25),
                 child: TextField(
+                  controller: passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter Password',
@@ -72,8 +75,8 @@ class _LoginScreen extends State<LoginScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
                         onPressed: () {
-                          //to do
-                          Navigator.pushNamed(context, '/main_menu');
+                          login(context);
+                          //Navigator.pushNamed(context, '/main_menu');
                         },
                       )),
                   Center(
@@ -99,5 +102,54 @@ class _LoginScreen extends State<LoginScreen> {
             ],
           ),
         ));
+  }
+}
+
+TextEditingController nameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
+Future<void> login(BuildContext context) async {
+  if (nameController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+    var response = await http.post(
+        Uri.parse("http://10.0.2.2:8000/accounts/login"),
+        body: ({
+          "username": nameController.text,
+          "password": passwordController.text
+        }));
+    if (response.statusCode == 200) {
+      Navigator.pushNamed(context, '/main_menu');
+    } else {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Alert Message"),
+          content: const Text("Invalid Credentials"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              },
+              child: const Text("okay"),
+            ),
+          ],
+        ),
+      );
+    }
+  } else {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Alert Message!"),
+        content: const Text("Blank Fields are not allowed!!!"),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+            child: const Text("okay"),
+          ),
+        ],
+      ),
+    );
   }
 }
