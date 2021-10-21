@@ -21,7 +21,7 @@ def login(request):
 
     if request.method=='POST':
         
-        status, secs = throttle(request)
+        status, secs = throttle(request, 's')
         if status:
             messages.error(request, 'Maximum Rate Exceeded. Wait for '+str(secs)+'s')
             return redirect('login')
@@ -33,6 +33,7 @@ def login(request):
 
         if user is not None:
             
+            throttle(request, 'd')
             auth.login(request, user)
 
             #check if phone is verified
@@ -49,21 +50,20 @@ def login(request):
                     token = request.COOKIES['token']
                     # check
                     request.session['username'] = username
-                    return render(request, 'home.html', {'user': user})
+                    return redirect('home')
                 
                 else:
                     return redirect('otp')
 
         else:
-            messages.error(request, 'Invalid Credendials')
+            messages.error(request, 'Invalid Credentials')
             return redirect('login')
 
     else:
         
         if 'username' in request.session:
             if request.user.is_authenticated and request.session['username']==request.user.username:
-                req_user = request.user
-                return render(request, 'home.html', {'user': req_user})
+                return redirect('home')
             
         else:
             return render(request, 'login.html')
@@ -74,7 +74,7 @@ def register(request):
 
     if request.method=='POST':
 
-        status, secs = throttle(request)
+        status, secs = throttle(request, 's')
         if status:
             messages.error(request, 'Maximum Rate Exceeded. Wait for '+str(secs)+'s')
             return redirect('register')
@@ -115,10 +115,11 @@ def register(request):
                 for lst in word.split(" "):    
                     if lst.startswith("19",0,2) or lst.startswith("20",0,2): 
                         if (lst==nic):  
+                            throttle(request, 'd')
                             request.session['nic'] = nic
                             return redirect('confirm')
                         else:
-                            messages.error(request, "*Couldn't verify your identity")
+                            messages.error(request, "Couldn't verify your identity")
                             return redirect('register')
                     
     else:
@@ -159,7 +160,7 @@ def send_otp(user):
 
     if cache.get(mobile):
         total_calls = cache.get(mobile)
-        if total_calls>2:
+        if total_calls>3:
             return False, cache.ttl(mobile)
         else:
             otp = str(random.randint(100000, 999999))
@@ -174,20 +175,6 @@ def send_otp(user):
     cache.set(mobile, 1, timeout=60)
     return True, 0
 
-"""
-    if (cache.get(mobile)):
-        return False, cache.ttl(mobile)
-    
-    otp = str(random.randint(100000, 999999))
-    profile.otp = otp
-    profile.save()
-
-    try:
-        cache.set(mobile, otp, timeout=60)
-        return True, 0
-    except Exception as e:
-        print(e)
-"""
 
 
 def otp(request):
@@ -196,7 +183,7 @@ def otp(request):
 
     if request.method == 'POST':
 
-        status, secs = throttle(request)
+        status, secs = throttle(request, 's')
         if status:
             messages.error(request, 'Maximum Rate Exceeded. Wait for '+str(secs)+'s')
             return redirect('otp', user)
@@ -208,11 +195,12 @@ def otp(request):
             profile.is_verified = True
             profile.save()
             request.session['username'] = user.username
-            return render(request, 'home.html', {'user': user})
+            throttle(request, 'd')
+            return redirect('home')
 
         else:
             messages.error(request, "Invalid OTP")
-            return redirect('otp', user)
+            return redirect('otp')
 
     else:
 
@@ -227,7 +215,8 @@ def otp(request):
         return render(request, 'otp.html', {'digits':digits})
 
 
-def throttle(request):
+
+def throttle(request, opt):
 
     forwarded = request.META.get('HTTP_X_FORWARDED_FOR')
     if forwarded:
@@ -235,16 +224,25 @@ def throttle(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
 
-    if cache.get(ip):
-        total_calls = cache.get(ip)
-        if total_calls>5:
-            return True, cache.ttl(ip)
-        else:
-            cache.set(ip, total_calls+1)
-            return False, 0
-    
-    cache.set(ip, 1, timeout=60)
+    if (opt=='s'):
+        if cache.get(ip):
+            total_calls = cache.get(ip)
+            if total_calls>5:
+                return True, cache.ttl(ip)
+            else:
+                cache.set(ip, total_calls+1)
+                return False, 0
+        
+        cache.set(ip, 1, timeout=60)
+        return False, 0
+
+    elif (opt=='d'):
+        if cache.get(ip):
+            cache.delete(ip)
+            return True, 0
+        
     return False, 0
+
 
 
 def resetpassword(request):
@@ -296,8 +294,8 @@ def home(request):
         }
         traceDet.append(thisdict)
     json_string = json.dumps(traceDet)    
-    print(traceDet)
-    return render(request, 'home.html',{'TraceLocation': json_string})
+    
+    return render(request, 'home.html', {'TraceLocation': json_string, 'user': request.user})
 
 
 
@@ -323,8 +321,7 @@ def myaccount(request):
 
     if not request.user.is_authenticated:
         return redirect('login')
-    print(request.META['HTTP_USER_AGENT'])
-    print(request.META['REMOTE_ADDR'])
+    
     return render(request, 'myaccount.html')
 
 
@@ -342,7 +339,6 @@ def search(request):
 
     result = calc(request,"call PERCENTAGE_CALC(%(nic)s)")
     return render(request, 'search.html',{'TraceLocation':result})
-
 
 
 

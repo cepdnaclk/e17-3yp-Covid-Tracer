@@ -10,7 +10,7 @@ class LocalCommunity(models.Model):
     address = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'LocalCommunity'
 
 
@@ -63,8 +63,12 @@ class Profile(models.Model):
 
 
 class TraceLocation(models.Model):
+    
     location = models.CharField(max_length=100)
     percentage = models.FloatField(max_length=5)
+
+    class Meta:
+        managed = True
 
 
 """
