@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Covid Tracer</title>
     <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
@@ -11,65 +11,94 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        table {
-          border-collapse: collapse;
-          table-layout: auto;
-          width : 100%;
-          display:table;
-          margin-right:auto;
-          margin-left:auto;
-        }
-        
-        th, td {
-          text-align: center;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even){background-color: #f2f2f2}
-        
-        th {
-          background-color: #4f8964;
-          color: white;
-        }
-        
-        input[type="radio"] {
-          margin-left: 10px;
-          font-size: 15px; /* Increase font-size */
-          padding: 12px 20px 12px 40px; /* Add some padding */
-          border: 1px solid #ddd; /* Add a grey border */
-          margin-bottom: 12px; /* Add some space below the input */
-        
-        }
-        #myInput {
-          background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-          background-position: 10px 12px; /* Position the search icon */
-          background-repeat: no-repeat; /* Do not repeat the icon image */
-          width: 50%; /* Full-width */
-          font-size: 16px; /* Increase font-size */
-          padding: 12px 20px 12px 40px; /* Add some padding */
-          border: 1px solid #ddd; /* Add a grey border */
-          margin-bottom: 12px; /* Add some space below the input */
-        
-        
-        }
-        
-        #button {
-          background-color: #4f8964;
-          border: none;
-          color: white;
-          padding: 5px 12px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          cursor: pointer;
-        }
-        
-        </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
 
 </head>
+<style>
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width : 100%;
+  display:table;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4f8964;
+  color: white;
+}
+
+input[type="radio"] {
+  margin-left: 10px;
+  font-size: 15px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+
+}
+#myInput {
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+
+
+}
+
+
+#percentage{
+  color:black;  
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right:36px;
+
+
+}
+
+
+.select{
+  width: 170px;
+  height: 28px;
+  margin-right:30px;
+
+}
+
+
+#submit1{
+  background-color: #4f8964;
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+
+</style>
 
 
 <body>
@@ -131,7 +160,7 @@
         </li>
 
         <li class="log_out">
-            <a href="logout">
+            <a href="../website/bla">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
             </a>
@@ -159,50 +188,48 @@
 
             <div class="sales-boxes">
                 <div class="recent-sales box">
-
-                    <div class="title">Traces</div>
+                    <div class="title">Merchants </div>
                     <br>
                     <div>
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for visited place by.." title="Type in a name">                        
-                    <br>
-                    <input type="radio" id="name" checked="checked" name="choice" value="2">Name 
-                    <input type="radio" id="location" name="choice" value="3">Location
+                    Merchant: <select class="select" name="merchant" id="merchant">
+                        <option value="" selected="selected">Select Merchant</option>
+                    </select>
+                    Area: <select class="select" name="area" id="area">
+                        <option value="" selected="selected">Select Area</option>
+                    </select>
+                    <br><br>
+                    <label for="percentage">Infected Percentage: </label>
+                    <input type="text" id="percentage" value="">
+                    <button type="button" id = "submit1">Search</button>
+
                     </div>
+                </div>
+            </div>
+
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">Top Infected Merchants</div>
                     <br>
                     <div class="sales-details">
                         <table id= "tracetable" >
                         <tr>
-                            <th>Date</th>
-                            <th>Time</th>
                             <th>Name</th> 
                             <th>Location</th>
                             <th>Infect Percentage(%)</th>
-                            <th>Temperature</th>
                         </tr>
-                        {% for results in TraceLocation%}
+                        {% for results in TopInfected%}
                         <tr>
-                            <td>{{results.4}}</td>
-                            <td>{{results.5}}</td>
                             <td>{{results.0}}</td>
                             <td>{{results.1}}</td>
                             <td>{{results.2}}</td>
-                            <td>{{results.3}}</td>
 
                         </tr>
                         {% endfor %}
 
                         </table>
 
-
                     </div>
-                    <button onclick="sortTable()" id = "button">Sort by Percentage</button>
                     
-                </div>
-            </div>
-            <div class="sales-boxes">
-                <div class="recent-sales box">
-                    <div style="position: relative; ">
-                    <div id= 'map' style="height:600px; width:100%;"></div>
                 </div>
             </div>
 
@@ -215,72 +242,62 @@
 
 
 
-   
     <script>
-        function myFunction() {
-            var input, filter, table, tr, td, i, txtValue, selected=false;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("tracetable");
-            tr = table.getElementsByTagName("tr");
-            const rbs = document.querySelectorAll('input[name="choice"]');
-            let selectedValue ;
+    var subjectObject = {
+        "Nolimit": ["Nugegoda", "Images", "Tables", "Lists"],
+        "FashionBug": ["Ja-Ela", "Margins", "Backgrounds", "Float"]
+    };
 
-            for (const rb of rbs) {
-                if (rb.checked) {
-                    selectedValue = rb.value;
-                    selected = true;
-                    break;
-                }
-                
-            }
-
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[selectedValue];
-                if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-                }
-                   
-            }
+    window.onload = function() {
+    var topicSel = document.getElementById("merchant");
+    var chapterSel = document.getElementById("area");
+    for (var x in subjectObject) {
+        topicSel.options[topicSel.options.length] = new Option(x, x);
+    }
+    topicSel.onchange = function() {
+        //empty Chapters dropdown
+        chapterSel.length = 1;
+        //display correct values
+        var z = subjectObject[this.value];
+        for (var i = 0; i < z.length; i++) {
+        chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
         }
-
-        
-    
-        function sortTable() {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("tracetable");
-        switching = true;
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-
-            switching = false;
-            rows = table.rows;
-
-            for (i = 1; i < (rows.length - 1); i++) {
-    
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[4];
-            y = rows[i + 1].getElementsByTagName("TD")[4];
-
-            if (y.innerHTML > x.innerHTML) {
-                shouldSwitch = true;
-                break;
-            }
-            }
-            if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            }
-        }
-        }
+    }
+    }
 
     </script>
+    <script>
+        const loadBtn = document.getElementById('submit1');
+
+        function searchInfectPercentage() {
+            var merchant = $('#merchant :selected').text();
+            var area = $('#area :selected').text();
+            $.ajax({
+                url: '{% url "load" %}',
+                type: 'GET',
+                data: {
+                    'merchant': merchant,
+                    'area': area
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    const data = response.posts;
+                    document.getElementById("percentage").value = Math.trunc(data[0][1]) +'%';
+                    //console.log(response.posts[0][1]);
+
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+        loadBtn.addEventListener('click', () => {
+            searchInfectPercentage()
+        });
+    </script>
+
+
 </body>
 
 </html>

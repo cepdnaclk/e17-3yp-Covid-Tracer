@@ -17,6 +17,9 @@ from django.db import connection
 import json
 import string
 
+from django.http import JsonResponse
+from django.core import serializers
+
 def login(request):
 
     if request.method=='POST':
@@ -337,8 +340,8 @@ def search(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    result = calc(request,"call PERCENTAGE_CALC(%(nic)s)")
-    return render(request, 'search.html',{'TraceLocation':result})
+    result = calc(request,"call TOP_INFECTED_PLACES_IN_USER_AREA(%(nic)s)")
+    return render(request, 'search.html',{'TopInfected':result})
 
 
 
@@ -368,4 +371,24 @@ def calc(request,query):
     #result = dict_fetchall(cursor)
     return (result)
 '''
+
+
+def load_more(request):
+    merchant= request.GET.get('merchant')
+    area = request.GET.get('area')
+    #print(type(merchant))
+    result = infectPercent(str(merchant),str(area))
+    #post_obj = result[1]
+    data = {
+        'posts': result
+    }
+    return JsonResponse(data=data)
+
+
+def infectPercent(merchant,area):
+    cursor = connection.cursor()
+    cursor.execute("call SEARCH_INFECT_PERCENTAGE(%(merchant)s,%(area)s)",{ 'merchant': merchant, 'area': area})
+    result = cursor.fetchall()
+    #result = dict_fetchall(cursor)
+    return (result)
 
