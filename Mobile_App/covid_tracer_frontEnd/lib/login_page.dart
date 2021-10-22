@@ -136,6 +136,8 @@ Future<void> login(BuildContext context) async {
       );
     }
   } else {
+    Navigator.pushNamed(context, '/main_menu');
+    /*
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -151,5 +153,6 @@ Future<void> login(BuildContext context) async {
         ],
       ),
     );
+    */
   }
 }

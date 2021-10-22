@@ -88,7 +88,7 @@ CACHES = {
 
 WSGI_APPLICATION = 'covid_tracer_backEnd.wsgi.application'
 
-AUTH_USER_MODEL = 'accounts.RegisteredUser'
+#AUTH_USER_MODEL = 'accounts.RegisteredUser'
 
 
 # Database

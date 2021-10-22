@@ -1,3 +1,4 @@
+"""
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -5,7 +6,7 @@ from django.http.response import JsonResponse
 
 from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
 from accounts.serializers import LocalCommunitySerializer, CustomAccountManagerSerializer, RegisteredUserSerializer, ProfileSerializer, TraceLocationSerializer
-
+"""
 """
 @csrf_exempt
 def Under_QuarantineApi(request):
@@ -15,7 +16,7 @@ def Under_QuarantineApi(request):
         under_quarantine_serializer = Under_QuarantineSerializer(under_quarantine,many=True)
         return JsonResponse(under_quarantine_serializer.data,safe=False)
 """
-
+"""
 @csrf_exempt
 def login(request):
     if request.method=='POST':
@@ -48,11 +49,13 @@ def otp(request):
         
         status, secs = throttle(request)
 """
+"""
 @csrf_exempt
 def throttle(request):
     if request.method=='POST':
         
         status, secs = throttle(request)
+"""
 """
 @csrf_exempt
 def home(request):
@@ -77,3 +80,4 @@ def calc(request):
     if request.method=='POST':
         
         status, secs = throttle(request)
+"""
