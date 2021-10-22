@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+//import 'package:http/http.dart' as http;
 
 class RegisterScreen2 extends StatefulWidget {
   const RegisterScreen2({Key? key}) : super(key: key);
@@ -59,6 +60,7 @@ class _RegisterScreen2 extends State<RegisterScreen2> {
                         border: Border.all(color: Colors.lightGreen, width: 4),
                         borderRadius: BorderRadius.circular(20)),
                     child: InternationalPhoneNumberInput(
+                      textFieldController: phoneController,
                       onInputChanged: (PhoneNumber value) {
                         //to do
                       },
@@ -77,8 +79,10 @@ class _RegisterScreen2 extends State<RegisterScreen2> {
                           border:
                               Border.all(color: Colors.lightGreen, width: 4),
                           borderRadius: BorderRadius.circular(20)),
-                      child: const TextField(
-                        decoration: InputDecoration(hintText: "Enter Here"),
+                      child: TextField(
+                        controller: emailController,
+                        decoration:
+                            const InputDecoration(hintText: "Enter Here"),
                       )),
                 ],
               ),
@@ -95,13 +99,41 @@ class _RegisterScreen2 extends State<RegisterScreen2> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50))),
                       onPressed: () {
-                        //to do
-                        Navigator.pushNamed(context, '/register3');
+                        register2(context);
+                        //Navigator.pushNamed(context, '/register3');
                       },
                     ))
               ]),
             ],
           ),
         ));
+  }
+}
+
+TextEditingController phoneController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+
+register2(BuildContext context) {
+  if (phoneController.text.isNotEmpty && emailController.text.isNotEmpty) {
+    Navigator.pushNamed(context, '/register3');
+  } else {
+    Navigator.pushNamed(context, '/register3');
+    /*
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Alert Message!"),
+        content: const Text("Blank Fields are not allowed!!!"),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+            child: const Text("okay"),
+          ),
+        ],
+      ),
+    );
+    */
   }
 }

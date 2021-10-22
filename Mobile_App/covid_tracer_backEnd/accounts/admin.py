@@ -1,3 +1,4 @@
+"""
 from django.contrib import admin
 from .models import RegisteredUser, LocalCommunity, Profile
 
@@ -5,3 +6,4 @@ from .models import RegisteredUser, LocalCommunity, Profile
 admin.site.register(RegisteredUser)
 admin.site.register(LocalCommunity)
 admin.site.register(Profile)
+"""

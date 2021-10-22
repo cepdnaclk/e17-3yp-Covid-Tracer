@@ -1,3 +1,4 @@
+"""
 from rest_framework import serializers
 from accounts.models import LocalCommunity, CustomAccountManager, RegisteredUser, Profile, TraceLocation
 
@@ -28,5 +29,5 @@ class TraceLocationSerializer(serializers.ModelSerializer):
         fields = ('location', 'percentage')
 
 
-
+"""
 

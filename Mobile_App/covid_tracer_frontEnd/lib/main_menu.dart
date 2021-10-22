@@ -26,7 +26,7 @@ class _MenuScreen extends State<MenuScreen> {
                           fontWeight: FontWeight.bold, fontSize: 50.0))),
               Padding(
                   padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 40, bottom: 10),
+                      left: 5, right: 5, top: 40, bottom: 10),
                   child: IconButton(
                     icon: const Icon(Icons.settings),
                     iconSize: 50,
@@ -55,8 +55,8 @@ class _MenuScreen extends State<MenuScreen> {
                       ),
                     )),
                 const Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, right: 10, top: 10, bottom: 10),
+                    padding:
+                        EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 10),
                     child: Text("Check-In to a Venue",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.0))),
@@ -64,7 +64,9 @@ class _MenuScreen extends State<MenuScreen> {
                   padding: const EdgeInsets.only(
                       left: 0, right: 0, top: 15, bottom: 15),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/settings');
+                    },
                     icon: const Icon(Icons.arrow_forward_ios),
                     color: Colors.white,
                     iconSize: 30,
@@ -101,7 +103,9 @@ class _MenuScreen extends State<MenuScreen> {
                   padding: const EdgeInsets.only(
                       left: 0, right: 0, top: 15, bottom: 15),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/settings');
+                    },
                     icon: const Icon(Icons.arrow_forward_ios),
                     color: Colors.white,
                     iconSize: 30,
@@ -138,7 +142,9 @@ class _MenuScreen extends State<MenuScreen> {
                   padding: const EdgeInsets.only(
                       left: 0, right: 0, top: 15, bottom: 15),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/trace_location');
+                    },
                     icon: const Icon(Icons.arrow_forward_ios),
                     color: Colors.white,
                     iconSize: 30,
@@ -175,7 +181,9 @@ class _MenuScreen extends State<MenuScreen> {
                   padding: const EdgeInsets.only(
                       left: 0, right: 0, top: 15, bottom: 15),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/settings');
+                    },
                     icon: const Icon(Icons.arrow_forward_ios),
                     color: Colors.white,
                     iconSize: 30,
@@ -212,7 +220,9 @@ class _MenuScreen extends State<MenuScreen> {
                   padding: const EdgeInsets.only(
                       left: 0, right: 0, top: 15, bottom: 15),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/settings');
+                    },
                     icon: const Icon(Icons.arrow_forward_ios),
                     color: Colors.white,
                     iconSize: 30,
