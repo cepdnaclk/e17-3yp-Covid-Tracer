@@ -230,7 +230,7 @@ def throttle(request, opt):
     if (opt=='s'):
         if cache.get(ip):
             total_calls = cache.get(ip)
-            if total_calls>5:
+            if total_calls>4:
                 return True, cache.ttl(ip)
             else:
                 cache.set(ip, total_calls+1)
