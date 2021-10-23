@@ -138,6 +138,7 @@ class Throttling_Test(LiveServerTestCase):
         pswrd.send_keys('wrongpswrd')
         submit.send_keys(Keys.RETURN)
 
+        time.sleep(10)
         assert ('Maximum Rate Exceeded.') in driver.page_source
 
         time.sleep(350)
