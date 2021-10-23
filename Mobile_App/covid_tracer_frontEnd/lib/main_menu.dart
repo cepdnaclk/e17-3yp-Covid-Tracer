@@ -26,7 +26,7 @@ class _MenuScreen extends State<MenuScreen> {
                           fontWeight: FontWeight.bold, fontSize: 50.0))),
               Padding(
                   padding: const EdgeInsets.only(
-                      left: 5, right: 5, top: 40, bottom: 10),
+                      left: 0, right: 0, top: 40, bottom: 10),
                   child: IconButton(
                     icon: const Icon(Icons.settings),
                     iconSize: 50,
