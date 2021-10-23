@@ -6,6 +6,7 @@ import 'registration2_page.dart';
 import 'registration3_page.dart';
 import 'main_menu.dart';
 import 'settings.dart';
+import 'trace_location.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -27,6 +28,7 @@ void main() {
       '/register3': (context) => const RegisterScreen3(),
       '/main_menu': (context) => const MenuScreen(),
       '/settings': (context) => const SettingsScreen(),
+      '/trace_location': (context) => const TraceLocationScreen(),
     },
   ));
 }

@@ -25,7 +25,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 50.0))),
               Padding(
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(10),
                   child: Icon(
                     Icons.coronavirus,
                     size: 50.0,
