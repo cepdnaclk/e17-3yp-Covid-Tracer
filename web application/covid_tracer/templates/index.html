@@ -86,8 +86,9 @@
                         <div class="box-topic">Cumulative Deaths</div>
                         <div class="number">{{stat.cumulative_deaths}}</div>
                         <div class="indicator">
-                            <i class='bx bx-down-arrow-alt down'></i>
-                            <span class="text">13% Decrease</span>
+                            <!--<i class='bx bx-down-arrow-alt down'></i>-->
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">13% Increase</span>
                         </div>
                     </div>
                 </div>
@@ -119,9 +120,19 @@
             
             <div class="sales-boxes">
                 <div class="recent-sales box">
-                    <div class="title">Cumulative Data</div>
+                    <div class="title">Cumulative Cases</div>
                     <div style="position: relative; width:100%;">
                         <canvas id="Chart3" height="400px" ></canvas>
+                    </div>
+                </div>
+            </div>
+            <!--End of graphs-->
+
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">Cumulative Deaths</div>
+                    <div style="position: relative; width:100%;">
+                        <canvas id="Chart4" height="400px" ></canvas>
                     </div>
                 </div>
             </div>
@@ -172,10 +183,10 @@
                     label: 'Number of Deaths',
                     data: [{% for stat in stats %}{{stat.new_deaths}},{% endfor %}],
                     backgroundColor: [
-                        'rgb(0, 0, 51)'
+                        '#c45850'
                     ],
                     borderColor: [
-                        'rgb(0, 0, 51)'
+                        '#c45850'
                     ],
                     borderWidth: 1,
                 }]
@@ -201,7 +212,26 @@
                   label: "Cases",
                   borderColor: "#3e95cd",
                   fill: false
-                }, { 
+                }
+              ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
+
+    <script>
+        new Chart(document.getElementById("Chart4"), {
+            type: 'line',
+            data: {
+              labels: [{% for stat in stats %}'{{stat.update_timestamp}}',{% endfor %}],
+              datasets: [ { 
                   data: [{% for stat in stats %}{{stat.cumulative_deaths}},{% endfor %}],
                   label: "Deaths",
                   borderColor: "#c45850",
