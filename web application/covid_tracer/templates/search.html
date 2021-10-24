@@ -160,7 +160,7 @@ input[type="radio"] {
         </li>
 
         <li class="log_out">
-            <a href="logout">
+            <a href="../website/bla">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
             </a>
@@ -176,7 +176,7 @@ input[type="radio"] {
         <nav>
         <div class="sidebar-button">
             <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Search a Location</span>
+            <span class="dashboard">Search Places </span>
         </div>
 
         <div class="profile-details">
@@ -188,11 +188,11 @@ input[type="radio"] {
 
             <div class="sales-boxes">
                 <div class="recent-sales box">
-                    <div class="title">Locations</div>
+                    <div class="title">Merchants </div>
                     <br>
                     <div>
                     Merchant: <select class="select" name="merchant" id="merchant">
-                        <option value="" selected="selected">Select a Location</option>
+                        <option value="" selected="selected">Select Merchant</option>
                     </select>
                     Area: <select class="select" name="area" id="area">
                         <option value="" selected="selected">Select Area</option>
@@ -208,7 +208,7 @@ input[type="radio"] {
 
             <div class="sales-boxes">
                 <div class="recent-sales box">
-                    <div class="title">Top Infected Locations</div>
+                    <div class="title">Top Infected Merchants</div>
                     <br>
                     <div class="sales-details">
                         <table id= "tracetable" >
@@ -245,7 +245,17 @@ input[type="radio"] {
     <script>
     var subjectObject = {
         "Nolimit": ["Nugegoda", "Images", "Tables", "Lists"],
-        "FashionBug": ["Ja-Ela", "Margins", "Backgrounds", "Float"]
+        "FashionBug": ["Ja-Ela", "Margins", "Backgrounds", "Float"],
+        "Thilakawardana Textiles(Pvt) Ltd": ["Kiribathgoda"],
+        "Sampath Bank":["Piliyandala"],
+        "ODEL":["Kiribathgoda","Colombo"],
+        "People's Bank": ["Kiribathgoda"],
+        "McDonald's Kiribathgoda": ["Kiribathgoda"],
+        "Aruna Cinema": ["Kiribathgoda"],
+        "University of Kelaniya": ["University of Kelaniya"],
+        "Post Office":["Battaramulla","Peliyagoda"],
+        "Pilimathalawa Tea Factory":["Pilimathalawa"]
+
     };
 
     window.onload = function() {
