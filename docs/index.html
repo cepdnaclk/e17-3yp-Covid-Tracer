@@ -57,24 +57,17 @@
               <li><a href="#timeline">Timeline</a></li>  
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Design
+          <li class="dropdown"><a href="#"><span>Development
           </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#database">Database System</a></li>
+              <li><a href="development.html">Software</a></li>
               <!--<li><a href="#">1</a></li>
               <li><a href="#">2</a></li>-->
-              <li><a href="#portfolio">UI/UX</a></li>
-              <li class="dropdown"><a href="#hardware-design"><span>Hardware Designs</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#circuit-diagram">Circuit Diagram</a></li>
-                  <li><a href="#schematic-design">Schematic Design</a></li>
-                  <li><a href="#pcb-design">PCB Design</a></li>
-                </ul>
-              </li> 
-              <li><a href="#blog">Conclusion</a></li>
+              <li><a href="hardware.html">Hardware</a></li>
             </ul>
           </li> 
-          <li><a href="#">Testing</a></li>
+          <li><a href="test.html">Testing</a></li>
+          <!--<li><a class="nav-link scrollto" href="#blog">Conclusion</a></li>-->
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -210,7 +203,7 @@
                   <i class="bi bi-check"></i> Inability to detect people under quarantine
                 </li>
                 <li>
-                  <i class="bi bi-check"></i> Inability to keep track of infect percentages of the locations visited
+                  <i class="bi bi-check"></i> Inability to keep track of infected percentages of the locations visited
                 </li>
               </ul>
               <br>
@@ -244,7 +237,8 @@
                   </div>
                   <h4>Computerized system</h4>
                   <p>
-                    Covid-19 management software with computerized database system for the Government
+                    Covid-19 management software with computerized database system for the Government. This is also mainly used for demonstrating how over system gets latest
+                    covid information from the Government Authorities through a REST API
                   </p>
                 </div>
               </div>
@@ -260,7 +254,7 @@
                   </div>
                   <h4>Autonomous detail entering and temperature checking</h4>
                   <p>
-                    Details about the person will be entered to the system by scanning the barcode of NIC, system will detect if the 
+                    Details about the person will be entered to the system by scanning the barcode of NIC/ QR scanning, system will detect if the 
                     person is under quarantine. The temperature will be measured using sensors. These temperature measurements along 
                     with the visited location will be sent to the server and stored for a 2 weeks period. Your privacy will be highly protected
                   </p>
@@ -380,11 +374,11 @@
             </p>
             <p>
               <i class="bi bi-dot"></i>A software for data entering, data representing along with a computerized database system will be provided to the
-              Government. They maintain detailed Covid related information like infects, pcr test reports,people under quarantine etc. in their 
+              Government Authorities. They maintain detailed Covid related information like infects, pcr test reports,people under quarantine etc. in their 
               server system. Our database system will be updated on certain intervals with the Government Server through a REST API.
             </p>
             <p>
-              <i class="bi bi-dot"></i>Our server system will be deployed in the cloud. We will keep information about people's ID numbers, 
+              <i class="bi bi-dot"></i>Our server system will be deployed in the cloud. We will keep information about people's NIC numbers, 
               addresses, contact numbers, visited locations, temperature readings obtained at various entrances etc. Various calculations on data 
               for example infect percentages will be done on a cloud virtual environment
             </p>    
@@ -416,7 +410,7 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline services-head text-center">
-              <h2>Embedded Hardware Device </h2>
+              <h2>Embedded Hardware Device</h2>
             </div>
           </div>
         </div>
@@ -428,27 +422,26 @@
             </video>
           </div>
 
-          <!-- single-well start-->
+          <!-- single-well start
           <div class= "col-md-12 col-sm-12 col-xs-12">
             <h5><br><br><br>
               Main Components of the Device<br></h5>
-          </div>
-          
+          </div>-->
+          <br>
+
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="well-left">
               <div class="single-well">
                 <div>
                   <h4 class="sec-head"><br>Microcontroller</h4>
-                  <div class="col-md-12 col-sm-12 col-xs-12">
+                  <!--<div class="col-md-12 col-sm-12 col-xs-12">
                     <img src="assets/img/hardware/esp32 board.jpg" alt="esp32 board">
-                  </div>
+                  </div>-->
                   <div>
                     <p>
-                        <br>Microcontroller is the base of our device and it should accomplish several task at the same time. 
-                        Hence, having a dual core processor in the microcontroller will be efficient to handle those tasks
-                        seperately. Low power consuption is a major concern as it is active 24x7 mostly.
-                         Moreover, the security should be upto the standard.
-                        Due to the above concerns, ESP 32 DOIT board has been chosen as the microcontroller.  
+                      <br>Microcontroller is the base of our device and it should accomplish several task at the same time. 
+                      Hence, having a dual core processor in the microcontroller will be efficient to handle those tasks
+                      seperately. Low power consuption is a major concern as it is active 24x7 mostly.
                     </p>
                   </div> 
                 </div>                
@@ -464,37 +457,40 @@
                     <div> 
                       <h5 class="sec-subhead"><br>GSM module</h5>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/sim module.jpg" alt="sim module">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
-                          <br>GSM module(SIM 800L) supports a sim card to connect with server using 2G mobile data as a backup option when 
-                          wifi is not available.  
+                        <br>GSM module(SIM 800L) supports a sim card to connect with server using 2G mobile data as a backup option when 
+                        wifi is not available.  
                       </p>
                     </div>
                     <div> 
                       <h4 class="sec-subhead">External Flash Memory</h4>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/flash memory.jpg" alt="flash memory">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
-                          <br>W25Q32(4MB) model is used as the external memory to increase the scalability of the device.
+                          <br>W25Q32(4MB) model is used as the external flash memory to increase the scalability of the device. As the system has to check with
+                          the cloud server whether the person is quarantined or not for each person, and since the server gets such requests from
+                          all over the country, the efficiency and scalability will be less. Therefore a local caching system will keep a list of quarantined people in there are,
+                          Thus only the information that is not available to the device can be requested from the server.
                       </p>
                     </div>
                     <div> 
                       <h5 class="sec-subhead"><br>Battery</h5>
                     </div>
 
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/battery.jpg" alt="battery">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
-                          <br>The device contains an internal recharagble battery to keep the device active in case of 
-                          power failure.   
+                        <br>The device contains an internal rechargeable battery to keep the device active in case of 
+                        power failures.   
                       </p>
                     </div>
 
@@ -514,31 +510,31 @@
                     <div> 
                       <h5 class="sec-subhead">IR Sensor </h5>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/ir sensor.jpg" alt="ir sensor">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
-                          <br>Contactless IR sensor is used to detect the body temperature.
+                        <br>Contactless IR sensor is used to detect the body temperature.
                       </p>
                     </div>
                     <div> 
                       <h5 class="sec-subhead"><br>Ultrasonic Sensor</h5>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/ultrasonic sensor.jpg" alt="ultrasonic sensor">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
-                          <br>This sensor is used to detect the distance from IR sensor to hand and to the execution of sanitizing unit.
+                        <br>This sensor is used to detect the distance from IR sensor to hand and to the execution of sanitizing unit.
                       </p>
                     </div>
                     <div> 
                       <h5 class="sec-subhead"><br>Barcode Scanner</h5>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/barcode scanner.jpg" alt="Barcode scanner">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
                           <br>Gm66 model 2D barcode reader is used to read the barcode in the ID card.   
@@ -555,20 +551,20 @@
                     <div> 
                       <h5 class="sec-subhead">Piezo Buzzer</h5>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/buzzer.jpg" alt="piezo buzzer">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
-                          <br>A piezo buzzer is used to indicate that certain process is successfully done or not.
+                        <br>A piezo buzzer is used to indicate that certain process is successfully done or not.
                       </p>
                     </div>
                     <div> 
                       <h5 class="sec-subhead"><br>LCD Display</h5>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">
                       <img src="assets/img/hardware/lcd.jpg" alt="lcd display">
-                    </div>
+                    </div>-->
                     <div>
                       <p>
                           <br>The result of each process is dispalyed on the LCD.
@@ -627,354 +623,22 @@
         <div class="row">
           <div class="well-middle">
             <h4 class="sec-head"><br><br>what are the sensitive data that needs to be secured?</h4>
+            <img src="assets/img/solution/security.png" style="width: 60%;" alt="sensitive data" class="center-highlevel">
             <p>
-              We keep personal details about people like full name, NIC, address, contact details, locations they have visited, health details like temperatures and oxygen levels.
-              Ensuring the Confidentiality and the Integrity of these data are crucial. If we encounter data breaches it can lead to Indentity theft incidents. Identity theft is using another
-              person's personal identifying information. If an attacker gets access to a target's user account, he can enter different locations using the target's identity.
+              Any system that handles <strong>PII(Personally Identifiable Information) or SPII(Sensitive Personally Identifiable Information)</strong> or any <strong>Health Care data</strong>, are legally obligated to protect these data.
+              If these information are compromised it can lead to devastating consequences like identity theft incidents, high risk of damage to a individual, loss of  trust on the system and many more.
+              There are many international guidlines such a system needs to adhere to. For example GDPR(General Data Protection Regulation), HIPAA(Health Insurance Portability and Accountability Act)
+            </p>
+            <p>
+              Our system keeps personal details about people like full name, NIC, address, contact details, locations they have visited, health details like temperatures and oxygen levels. These data have high criticality. When such system is deployed,
+              many attackers try to play with the data since the data can be of interest to many. For example if a person can access to someone else's mobile app, he can checkin to places pretending to be someone else.
+              If our database is compromised it can lead to a data breach which will expose all the PII details of the community.
               This can even result in Ransomware attacks.
             </p>
           </div>      
-        </div> 
-        <div class="row">
-          <!-- single-well start-->
-          <div class="col-md-12 col-sm-6 col-xs-12">
-            <div class="well-middle">
-              <div class="single-well">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  
-                  <img src="assets/img/solution/security.png" style="width: 80%;" alt="sensitive data" class="center-highlevel">
-                </div>
-              </div>
-            </div> 
-          </div>
-          <!-- single-well end-->
         </div>    
       </div>
     </div><!-- End Security Section -->
-
-
-    <!-- ======= Database Section ======= -->
-    <div id="database" class="about-area area-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Database System</h2>
-            </div>
-          </div>
-        </div>  
-        <div class="row">
-          <div class="well-middle">
-            <h4>Conceptual Schema- ER Diagram</h4>
-            <img src="assets/img/solution/Conceptual Schema-System.png" style="width:100%;" alt="world due to covid" class="center-highlevel" />
-            <p><br>
-              This is the er diagram of the relational database of our system. Below is a description of each entity
-              <ul>
-                <li><strong>MERCHANT-</strong>Commercial Merchants can register to our System and they will be provided with an IoT device with the Unique serial number.
-                Their details will be kept in the Merchant entity</li>
-                <li><br><strong>LOCAL_COMMUNITY-</strong>When people enter into locations scanning their NIC, full details of the person will be entered into this relation</li>
-                <li><br><strong>TRACE-</strong>We will be keeping track of the locations people visit for a 2 weeks period along with the temperature measurements obtained</li>
-                <li><br><strong>USER-</strong>When people register to our system they will be added to the user relation. Automated details facility
-                is provided for anyone despite of whether they are registered or not. The registered users have the aditional facility of viewing their traces
-                and getting infect percentages</li>
-                <li><br><strong>UNDER_QUARANTINE, INFECT-</strong>Our database will be updated with the Government through a REST API to get Covid related information
-                and details about people under quarantine and infects during certain time intervals</li>
-              </ul> 
-            </p>
-          </div>
-        <div class="row">
-          <div class="well-middle">
-            <h4><br>Logical Schema</h4>
-            <img src="assets/img/solution/Logical Schema-System.png" alt="world due to covid" class="center-highlevel" />
-          </div>      
-        </div>
-      </div>
-    </div><!-- End Database Section -->
-
-
-    <!-- ======= Portfolio Section ======= -->
-    <div id="portfolio" class="portfolio-area area-padding fix">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>UI/UX</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row wesome-project-1 fix">
-          <!-- Start Portfolio -page -->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <ul id="portfolio-flters">
-              <li data-filter=".filter-web1" class="filter-active">web</li>
-              <li data-filter=".filter-app">web</li>
-              <li data-filter=".filter-card">app</li>
-              <li data-filter=".filter-web">app</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row awesome-project-content portfolio-container">
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/dashboard.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/dashboard.png">
-                      <h4>Dashboard</h4>
-                      <span>User Specific</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--portfolio-item end-->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/dashboard2.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/dashboard2.png">
-                      <h4>Temperatures</h4>
-                      <span>Graphical View</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--portfolio-item end-->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/trace.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/trace.png">
-                      <h4>Traces</h4>
-                      <span>Tabular View</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--portfolio-item end-->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web1 portfolio-item">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/home.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/home.png">
-                      <h4>Basic UI</h4>
-                      <span>General Covid Statistics</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--portfolio-item end-->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/register 1.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/register 1.png">
-                      <h4>Register</h4>
-                      <span>Step 1</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-          
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/splash screen.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/splash screen.png">
-                      <h4>Home Page</h4>
-                      <span>App</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/login.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/login.png">
-                      <h4>Login Page</h4>
-                      <span>App</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/main menu.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/main menu.png">
-                      <h4>Main Menu</h4>
-                      <span>App</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/settings.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/settings.png">
-                      <h4>Settings</h4>
-                      <span>App</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/register 2.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/register 2.png">
-                      <h4>Register</h4>
-                      <span>Step 2</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web1">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/weblogin.png" alt="" /></a>
-                <div class="add-actions text-center text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/weblogin.png">
-                      <h4>Login Page</h4>
-                      <span>Web App</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-          <!-- portfolio-item start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="assets/img/portfolio/register 3.png" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="portfolio-lightbox" data-gallery="myGallery" href="assets/img/portfolio/register 3.png">
-                      <h4>Register</h4>
-                      <span>Step 3</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item end -->
-
-        </div>
-      </div>
-    </div><!-- End Portfolio Section -->
-
-
-    <!-- ======= Hardware design Section ======= -->
-    <div id="hardware-design" class="about-area area-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Hardware Designs</h2>
-            </div>
-          </div>
-        </div>  
-        <div id ="circuit-diagram" class="row">
-          <div class="well-middle">
-            <h4 class="sec-head"><br>Circuit Diagram</h4>
-            <img src="assets/img/solution/circuit.png" alt="world due to covid" class="center-highlevel" />
-          </div>      
-        </div>
-        <div id="schematic-design" class="row">
-          <div class="well-middle">
-            <h4 class="sec-head"><br>Schematic Design</h4>
-            <img src="assets/img/solution/Schematic_module.png" alt="world due to covid" class="center-highlevel" />
-          </div>      
-        </div>
-        <div id="pcb-design" class="row">
-          <h4 class="sec-head"><br>PCB Design</h4>
-          <div class="col-md-6 col-sm-3 col-xs-12 portfolio-item filter-card">
-            <div class = "well-middle">
-              <img src="assets/img/solution/PCB design.png" alt="world due to covid" class="center-highlevel" />
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-4 col-xs-12 portfolio-item filter-card">
-            <div class = "well-middle">
-              <img src="assets/img/solution/3d view of pcb.PNG" alt="3d of pcb" class="center-highlevel" />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div><!-- End Hardware Section -->
 
 
     <!-- ======= Pricing Section ======= -->
@@ -1103,6 +767,7 @@
 
 
     <!-- ======= Blog Section ======= -->
+    <!--
     <div id="blog" class="blog-area">
       <div class="blog-inner area-padding">
         <div class="blog-overly"></div>
@@ -1115,7 +780,6 @@
             </div>
           </div>
           <div class="row">
-            <!-- Start Left Blog -->
             <div class="col-md-8 col-sm-4 col-xs-12">
               <div class="single-blog">
                 <div class="blog-meta">
@@ -1136,10 +800,7 @@
                   </p>
                 </div>
               </div>
-              <!-- Start single blog -->
             </div>
-            <!-- End Left Blog-->
-            <!-- Start Right Blog-->
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="single-blog">
                 <div class="single-blog-img">
@@ -1160,11 +821,11 @@
                 </span>
               </div>
             </div>
-            <!-- End Right Blog-->
           </div>
         </div>
       </div>
-    </div><!-- End Blog Section -->
+    </div>
+    -->
 
   </main><!-- End #main -->
 
