@@ -75,8 +75,8 @@ class _LoginScreen extends State<LoginScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
                         onPressed: () {
-                          login(context);
-                          //Navigator.pushNamed(context, '/main_menu');
+                          //login(context);
+                          Navigator.pushNamed(context, '/main_menu');
                         },
                       )),
                   Center(
