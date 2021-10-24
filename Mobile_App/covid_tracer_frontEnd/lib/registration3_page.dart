@@ -1,4 +1,6 @@
+import 'package:covid_tracer/registration2_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class RegisterScreen3 extends StatefulWidget {
   const RegisterScreen3({Key? key}) : super(key: key);
@@ -58,8 +60,10 @@ class _RegisterScreen3 extends State<RegisterScreen3> {
                           border:
                               Border.all(color: Colors.lightGreen, width: 4),
                           borderRadius: BorderRadius.circular(20)),
-                      child: const TextField(
-                        decoration: InputDecoration(hintText: "Enter Here"),
+                      child: TextField(
+                        controller: usernameController,
+                        decoration:
+                            const InputDecoration(hintText: "Enter Here"),
                       )),
                   const Padding(
                       padding: EdgeInsets.only(left: 20.0, top: 10),
@@ -73,9 +77,11 @@ class _RegisterScreen3 extends State<RegisterScreen3> {
                           border:
                               Border.all(color: Colors.lightGreen, width: 4),
                           borderRadius: BorderRadius.circular(20)),
-                      child: const TextField(
+                      child: TextField(
+                        controller: passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(hintText: "Enter Here"),
+                        decoration:
+                            const InputDecoration(hintText: "Enter Here"),
                       )),
                   const Padding(
                       padding: EdgeInsets.only(left: 20.0, top: 10),
@@ -89,9 +95,11 @@ class _RegisterScreen3 extends State<RegisterScreen3> {
                           border:
                               Border.all(color: Colors.lightGreen, width: 4),
                           borderRadius: BorderRadius.circular(20)),
-                      child: const TextField(
+                      child: TextField(
+                        controller: password1Controller,
                         obscureText: true,
-                        decoration: InputDecoration(hintText: "Enter Here"),
+                        decoration:
+                            const InputDecoration(hintText: "Enter Here"),
                       )),
                 ],
               ),
@@ -108,13 +116,73 @@ class _RegisterScreen3 extends State<RegisterScreen3> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50))),
                       onPressed: () {
-                        //to do
-                        //Navigator.pushNamed(context, '/register3');
+                        register3(context);
+                        //Navigator.pushNamed(context, '/main_menu');
                       },
                     ))
               ])
             ],
           ),
         ));
+  }
+}
+
+TextEditingController usernameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+TextEditingController password1Controller = TextEditingController();
+
+Future<void> register3(BuildContext context) async {
+  if (usernameController.text.isNotEmpty &&
+      passwordController.text.isNotEmpty &&
+      password1Controller.text.isNotEmpty &&
+      phoneController.text.isNotEmpty &&
+      emailController.text.isNotEmpty) {
+    var response =
+        await http.post(Uri.parse("http://10.0.2.2:8000/accounts/register"),
+            body: ({
+              "contact": phoneController.text,
+              "email": emailController.text,
+              "username": usernameController.text,
+              "password": passwordController.text,
+              "password1": password1Controller.text
+            }));
+    if (response.statusCode == 200) {
+      Navigator.pushNamed(context, '/main_menu');
+    } else {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Alert Message"),
+          content: const Text("Something Went Wrong!!!"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              },
+              child: const Text("okay"),
+            ),
+          ],
+        ),
+      );
+    }
+  } else {
+    Navigator.pushNamed(context, '/main_menu');
+    /*
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Alert Message!"),
+        content: const Text("Blank Fields are not allowed!!!"),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+            child: const Text("okay"),
+          ),
+        ],
+      ),
+    );
+    */
   }
 }

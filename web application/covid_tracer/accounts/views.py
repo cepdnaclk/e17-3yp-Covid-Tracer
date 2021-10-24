@@ -2,7 +2,7 @@ from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation
+from accounts.models import LocalCommunity, RegisteredUser, Profile, TraceLocation, DeviceSessions
 from django.contrib.auth.models import auth
 
 
@@ -56,21 +56,27 @@ def login(request):
                     return redirect('home')
                 
                 else:
-                    return redirect('otp')
+                    request.session['username'] = username
+                    return redirect('home')
+                    #return redirect('otp')
 
         else:
             messages.error(request, 'Invalid Credentials')
             return redirect('login')
 
     else:
-        
+
+        user = auth.authenticate(username='user1', password='user1')
+        auth.login(request, user)
+        return redirect('home')
+        """
         if 'username' in request.session:
             if request.user.is_authenticated and request.session['username']==request.user.username:
                 return redirect('home')
             
         else:
             return render(request, 'login.html')
-    
+        """
     
 
 def register(request):
@@ -230,7 +236,7 @@ def throttle(request, opt):
     if (opt=='s'):
         if cache.get(ip):
             total_calls = cache.get(ip)
-            if total_calls>5:
+            if total_calls>4:
                 return True, cache.ttl(ip)
             else:
                 cache.set(ip, total_calls+1)
@@ -254,12 +260,17 @@ def resetpassword(request):
         return redirect('login')
 
 
+
 def rememberdevice(request):
 
     if not request.user.is_authenticated:
         return redirect('login')
 
     if request.method=='POST':
+
+        agent = request.POST['agent']
+        ip = request.POST['ip']
+        print(ip)
 
         randomstring = ''.join(random.choices(string.ascii_letters+string.digits, k=20))
         response = HttpResponse()
@@ -277,6 +288,7 @@ def forgetdevice(request):
         response = HttpResponse()
         response.delete_cookie('token')
         return response
+
 
 
 def home(request):
@@ -325,7 +337,14 @@ def myaccount(request):
     if not request.user.is_authenticated:
         return redirect('login')
     
-    return render(request, 'myaccount.html')
+    devs = DeviceSessions.objects.filter(user=request.user)
+    for dev in devs:
+        if dev.token is None:
+            dev.token = '0'
+        else:
+            dev.token = '1'
+
+    return render(request, 'myaccount.html', {'devices': devs})
 
 
 def forgotpassword(request):
