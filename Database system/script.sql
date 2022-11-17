@@ -175,17 +175,3 @@ JOIN(
 
 END$$
 DELIMITER ;
-
-
-/*GET LATEST STATISTICS*/
-
-DELIMITER $$
-CREATE PROCEDURE GET_LATEST_VEHICLE_STAT ()
-BEGIN
-
-    SELECT * FROM GovernmentUpdates ORDER BY update_timestamp DESC LIMIT 1;
-
-END$$
-DELIMITER ;
-
-/*  ----------------------------- */

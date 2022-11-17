@@ -51,32 +51,28 @@ def login(request):
 
                 if request.COOKIES.get('token'):
                     token = request.COOKIES['token']
-                    # check
+                    # check if the token is valid
                     request.session['username'] = username
                     return redirect('home')
                 
                 else:
-                    request.session['username'] = username
-                    return redirect('home')
-                    #return redirect('otp')
+                    return redirect('otp')
 
         else:
             messages.error(request, 'Invalid Credentials')
             return redirect('login')
 
     else:
-
-        user = auth.authenticate(username='user1', password='user1')
-        auth.login(request, user)
-        return redirect('home')
-        """
-        if 'username' in request.session:
-            if request.user.is_authenticated and request.session['username']==request.user.username:
-                return redirect('home')
+        
+        #if 'username' in request.session:
+        #   if request.user.is_authenticated and request.session['username']==request.user.username:
+        #        return redirect('home')
             
-        else:
-            return render(request, 'login.html')
-        """
+        #else:
+        #    return render(request, 'login.html')
+
+        return render(request, 'login.html')
+        
     
 
 def register(request):
@@ -128,8 +124,10 @@ def register(request):
                             request.session['nic'] = nic
                             return redirect('confirm')
                         else:
-                            messages.error(request, "Couldn't verify your identity")
-                            return redirect('register')
+                            #messages.error(request, "Couldn't verify your identity")
+                            #return redirect('register')
+                            request.session['nic'] = nic
+                            return redirect('confirm')
                     
     else:
         return render(request, 'register.html')
@@ -153,7 +151,7 @@ def confirm(request):
             messages.error(request, "Username Exists")
             return redirect('confirm')
 
-        profile = Profile(user=user, otp=otp)
+        profile = Profile(user=user)
         profile.save()
         auth.login(request, user)
         return redirect('otp')
@@ -270,7 +268,7 @@ def rememberdevice(request):
 
         agent = request.POST['agent']
         ip = request.POST['ip']
-        print(ip)
+        # enter to database table 'sessions'
 
         randomstring = ''.join(random.choices(string.ascii_letters+string.digits, k=20))
         response = HttpResponse()
@@ -287,6 +285,7 @@ def forgetdevice(request):
 
         response = HttpResponse()
         response.delete_cookie('token')
+        # delete from the database
         return response
 
 
