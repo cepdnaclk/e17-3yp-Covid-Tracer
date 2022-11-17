@@ -6,6 +6,7 @@
 #define TRIGGER_PIN 4
 #define ECHO_PIN 2
 #define MAX_DISTANCE 10
+#define BUZZER_PIN 11
 
 // NewPing setup of pins and maximum distance
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); 
@@ -50,6 +51,16 @@ void loop(){
 
       if(temp > 38.0){
         /*not allowed*/
+        int i = 0;
+        do{
+          tone(BUZZER_PIN, 450);
+          delay(500);
+          noTone(BUZZER_PIN);
+          delay(500);
+        }while(i<3);
+
+        lcd.setCursor(2,1);   //Move cursor to character 2 on line 1
+        lcd.print("NOT ALLOWED!");
       }
       else{
         /*publish*/
