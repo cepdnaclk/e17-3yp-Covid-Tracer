@@ -1,0 +1,4 @@
+mysqlclient @ file:///C:/Users/Deanna/Desktop/e17-3yp-Covid-Tracer/web%20application/covid_tracer/mysqlclient-1.4.6-cp39-cp39-win_amd64.whl
+mysqlclient @ file:///C:/Users/Deanna/Downloads/mysqlclient-1.4.6-cp39-cp39-win_amd64.whl
+
+opencv-python==4.5.3.56

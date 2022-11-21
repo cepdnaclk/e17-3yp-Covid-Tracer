@@ -50,8 +50,8 @@ class _TraceLocationScreen extends State<TraceLocationScreen> {
         position: showLocation, //position of marker
         infoWindow: const InfoWindow(
           //popup info
-          title: 'visited',
-          //snippet: 'My Custom Subtitle',
+          title: 'Visited',
+          snippet: 'Infected 4%',
         ),
         icon: BitmapDescriptor.defaultMarker, //Icon for Marker
       ));
@@ -63,8 +63,8 @@ class _TraceLocationScreen extends State<TraceLocationScreen> {
             7.103111806402098, 79.91024373067867), //position of marker
         infoWindow: const InfoWindow(
           //popup info
-          title: 'visited',
-          //snippet: 'My Custom Subtitle',
+          title: 'Visited',
+          snippet: 'Infected 7%',
         ),
         icon: BitmapDescriptor.defaultMarker, //Icon for Marker
       ));
@@ -76,8 +76,8 @@ class _TraceLocationScreen extends State<TraceLocationScreen> {
             7.087993298170049, 79.89776456932132), //position of marker
         infoWindow: const InfoWindow(
           //popup info
-          title: 'visited',
-          //snippet: 'My Custom Subtitle',
+          title: 'Visited',
+          snippet: 'Infected 5%',
         ),
         icon: BitmapDescriptor.defaultMarker, //Icon for Marker
       ));

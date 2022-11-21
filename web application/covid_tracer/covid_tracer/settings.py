@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q9eu=6)+tiral$ey_m75rq308a9hv#3m%d5r)lkp=yh8q)w_a1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['covid-tracer.azurewebsites.net']
 
 # setting session cookie age to one hour
 SESSION_COOKIE_AGE = 3600
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,12 +76,24 @@ TEMPLATES = [
 ]
 
 # django-redis
-CACHES = {
+"""CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}"""
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        "LOCATION": 'rediss://covid-tracer-redis-cache.redis.cache.windows.net:6380/0',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'PASSWORD': 'hipwAABV6fKtGHmvVFq9mJd1TcDnnY5GDAzCaEfPOTM=',
+            'SSL': True,
         }
     }
 }
@@ -97,10 +110,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'COVID_TRACER',
-        'USER' : 'admin',
-        'PASSWORD' : 'sunshine',
-        'HOST' : 'covid-tracer.cgqjj1pphhck.us-east-1.rds.amazonaws.com',
-        'PORT' : '3306'    
+        'USER' : 'myadmin',
+        'PASSWORD' : 'sunshine123#',
+        'HOST' : 'covid-tracer.mysql.database.azure.com',
+        'PORT' : '3306',
     }
 }
 
@@ -145,6 +158,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
